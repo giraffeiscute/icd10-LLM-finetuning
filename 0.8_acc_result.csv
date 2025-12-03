@@ -1,0 +1,824 @@
+﻿index,accuracy_reward,completion_length,ground_truths_ans,predictions_ans,assistant_reply,question
+28,1.0,1142,E785 I10 K760 K8520 N838,E785 I10 K760 K8590 N83,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: nausea/vomiting, abdominal pain**：這些是急性胰臟炎的常見症狀，通常在確定診斷後不再單獨編碼。
+2.  **History of HTN (Hypertension)**：這是患者的既往病史，需要編碼。對應 ICD-10 編碼 **I10** (Essential (primary) hypertension)。
+3.  **History of HLD (Hyperlipidemia)**：這是患者的既往病史，需要編碼。對應 ICD-10 編碼 **E78.5** (Hyperlipidemia, unspecified)。
+4.  **Labs notable for: lipase 457, CT A/P with mild inflammatory change surrounding the pancreatic head, Admitted for management of acute pancreatitis**：這些資訊明確診斷為急性胰臟炎。對應 ICD-10 編碼 **K85.90** (Acute pancreatitis, unspecified)。
+5.  **RUQ US with steatosis**：這是超音波檢查發現的脂肪肝。對應 ICD-10 編碼 **K76.0** (Fatty (change of) liver, not elsewhere classified)。
+6.  **CT A/P with 5.3 cm left adnexal cystic structure appears simple**：CT 報告發現左側附件囊性結構，雖然建議門診追蹤，但仍是當前的診斷發現。由於是左側附件，且為囊性結構，最常見且合理的推斷是卵巢囊腫。對應 ICD-10 編碼 **N83.202** (Unspecified ovarian cyst, left side)。
+7.  **Labs notable for: wbc 12.5, Na 132, AST 65, ALT 54, lactate 2.2**：這些是實驗室異常，支持急性胰臟炎的診斷，但通常不作為獨立編碼，除非它們代表需要獨立治療的嚴重合併症。在本例中，它們是急性疾病過程中的一部分，不需要額外編碼。
+8.  **Mild headache**：這是次要症狀，通常不編碼，因為它與主要診斷無關且不影響治療計劃。
+</reasoning>
+<answer>
+I10,E78.5,K85.90,K76.0,N83.202
+</answer>","患者 20002638 的病歷如下：Sex:   F
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+nausea/vomiting, abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+none
+ 
+History of Present Illness:
+___ with history of HTN, HLD who presents with acute onset 
+abdominal pain on ___ after eating pecan pie. Since this time 
+she has had nausea/vomiting and increased abdominal pain. No 
+fevers. Able to tolerate liquids but no solids. +Flatus. She 
+presents this morning due to continued restlessness at home. No 
+prior appendectomy or cholecystectomy. No sick contacts at home. 
+Last BM was either ___ or ___.  
+
+In the ED, initial vitals: 96.4 118 130/70 18 99% RA.  
+- Exam notable for: + guarding in LUQ and RUQ; + rebound 
+tenderness.  
+- Labs notable for: wbc 12.5, Na 132, AST 65, ALT 54, lipase 
+457, lactate 2.2.  
+- Imaging notable for: CT A/P with 1. Mild degree of 
+inflammatory change surrounding the pancreatic head raises the 
+possibility of pancreatitis.2. 5.3 cm left adnexal cystic 
+structure appears simple. Unless prior imaging is available for 
+comparison, outpatient pelvic ultrasound is recommended. She 
+also had a RUQ US with steatosis.  
+ - Patient given: 2L NS, 2L LR, 12 mg IV morphine.  
+ - She was admitted for management of acute pancreatitis.  
+ - Vitals prior to transfer: 99.1 77 153/96 18 100% RA.  
+ 
+On arrival to the floor, pt reports improved, but still present 
+abdominal fullness and epigastric tenderness when pushed. She is 
+still passing flatus. No emesis/nausea, fevers/chills, dysuria, 
+chest pain or dyspnea. She does have a mild headadche. No 
+history of pancreatitis or alcohol withdrawal/alcohol withdrawal 
+seizures.。請問他的 ICD10 編碼應該有哪些呢？"
+79,0.8571428571428571,1237,H539 I10 K219 R0789 R200 R55,H5319 I10 K219 R002 R0789 R202 R55 R688,"<reasoning>
+逐步推理：
+1.  **PMH - HTN (Hypertension):** 患者有高血壓病史。
+    *   ICD-10 編碼：I10 (Essential (primary) hypertension)
+2.  **PMH - GERD (Gastroesophageal Reflux Disease):** 患者有胃食道逆流病史。
+    *   ICD-10 編碼：K21.9 (Gastro-esophageal reflux disease without esophagitis) - 由於未提及食道炎，選擇無食道炎的胃食道逆流。
+3.  **Chief Complaint/HPI - Pre-syncopal episode / Near syncope:** 患者出現近乎暈厥的發作。
+    *   ICD-10 編碼：R55 (Syncope and collapse) - 此碼適用於暈厥和虛脫，也常用於描述近乎暈厥的症狀。
+4.  **Chief Complaint/HPI - Transient vision loss / Vision blurring:** 與近乎暈厥發作相關的短暫視力喪失。
+    *   ICD-10 編碼：H53.19 (Other transient visual loss) - 描述其他短暫的視力喪失。
+5.  **Chief Complaint/HPI - Palpitations:** 患者主訴心悸。
+    *   ICD-10 編碼：R00.2 (Palpitations)
+6.  **Chief Complaint/HPI - ""Chest burning"" / burning left-sided chest discomfort:** 患者出現胸部灼熱感或不適。
+    *   ICD-10 編碼：R07.89 (Other chest pain) - 描述其他類型的胸痛。雖然患者有GERD病史，但此症狀作為本次就醫的急性主訴，宜單獨編碼為症狀。
+7.  **Chief Complaint - Left leg numbness:** 患者主訴左腿麻木。
+    *   ICD-10 編碼：R20.2 (Paresthesia and hypesthesia) - 描述感覺異常和感覺減退，包含麻木感。
+8.  **Chief Complaint - ""Cold sweat"":** 患者主訴冒冷汗。
+    *   ICD-10 編碼：R68.8 (Other general symptoms and signs) - 描述其他一般症狀和體徵，由於沒有更具體的「冷汗」編碼，此為合適選項。
+</reasoning>
+<answer>
+I10,K21.9,R55,H53.19,R00.2,R07.89,R20.2,R68.8
+</answer>","患者 20007378 的病歷如下：Sex:   M
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Left leg numbness, ""cold sweat"", vision blurring followed by 
+several hours of ""chest burning"" and palpatations.
+ 
+Major Surgical or Invasive Procedure:
+N/A
+
+ 
+History of Present Illness:
+Mr. ___ is a ___ ___ speaking man with PMH of HTN 
+and GERD who presents after pre-syncopal episode with associated 
+transient vision loss followed by several hours of ""chest 
+burning.""
+
+At approximately 1:30 ___, the patient was sitting down eating 
+lunch when he developed the acute onset of palpitations, vision 
+loss, and near syncope that persisted for two minutes and then 
+fully resolved. Following this episode he developed burning 
+left-sided chest discomfort that persisted for a few hours. 
+Based on this event, he presented to the ED for further 
+evaluation.。請問他的 ICD10 編碼應該有哪些呢？"
+305,0.8181818181818182,1543,D329 E1121 E1142 E785 I129 I2510 K1120 L03211 N189 R1312 Z794 Z85820,D320 E119 I10 I2510 K112 L03 N189 R1319 Z794 Z85 Z91,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: parotitis** - 患者的主要主訴和影像學檢查結果顯示為腮腺炎。因此，K11.2 (Sialoadenitis) 是主要的診斷編碼。
+2.  **Rapidly progressive R facial swelling and imaging findings concerning for parotitis and cellulitis of overlying skin.** - 除了腮腺炎，CT 也顯示了覆蓋皮膚的蜂窩組織炎。由於腫脹和紅斑擴散至頸部並越過中線，L03.211 (Cellulitis of face) 應被納入。
+3.  **New difficulty swallowing (dysphagia)** - 患者報告吞嚥困難，這是一個新的且重要的症狀。R13.19 (Other dysphagia) 是適用的編碼。
+4.  **PMHx T2DM on insulin** - 患者有胰島素治療的2型糖尿病史。E11.9 (Type 2 diabetes mellitus without complications) 是糖尿病本身的編碼，Z79.4 (Long-term (current) use of insulin) 用於表示長期使用胰島素。
+5.  **PMHx CKD (b/l Cr ~1.3)** - 患者有慢性腎病史，但未指定分期。N18.9 (Chronic kidney disease, unspecified) 是適用的編碼。
+6.  **PMHx CAD** - 患者有冠狀動脈疾病史。I25.10 (Atherosclerotic heart disease of native coronary artery without angina pectoris) 是最恰當的編碼，因為沒有提到心絞痛症狀。
+7.  **PMHx HTN** - 患者有高血壓史。I10 (Essential (primary) hypertension) 是適用的編碼。
+8.  **PMHx olfactory groove meningioma** - 患者有嗅溝腦膜瘤史。嗅溝腦膜瘤屬於腦膜的良性腫瘤。D32.0 (Benign neoplasm of cerebral meninges) 是適用的編碼。
+9.  **PMHx prior melanoma** - 患者有既往黑色素瘤史。Z85.820 (Personal history of malignant melanoma of skin) 用於表示皮膚惡性黑色素瘤的個人病史。
+10. **Allergies: Demerol / Thimerosal / Altace** - 患者有藥物過敏史。Z91.011 (Allergy to opioid analgesic) 用於Demerol過敏。Z91.013 (Allergy to other specified drug) 用於Thimerosal和Altace過敏。
+
+總結出最合理的編碼集合：K11.2, L03.211, R13.19, E11.9, Z79.4, N18.9, I25.10, I10, D32.0, Z85.820, Z91.011, Z91.013。
+</reasoning>
+<answer>
+K11.2, L03.211, R13.19, E11.9, Z79.4, N18.9, I25.10, I10, D32.0, Z85.820, Z91.011, Z91.013
+</answer>","患者 20027099 的病歷如下：Sex:   F
+ 
+Service: MEDICINE
+ 
+Allergies: 
+Demerol / Thimerosal / Altace
+ 
+Attending: ___.
+ 
+Chief Complaint:
+parotitis
+ 
+Major Surgical or Invasive Procedure:
+none
+ 
+History of Present Illness:
+___ woman w/PMHx T2DM on insulin, CKD
+(b/l Cr ~1.3), CAD, HTN, olfactory groove meningioma, and prior
+melanoma, who presents from ___ with rapidly progressive 
+R
+facial swelling and imaging findings concerning for parotitis. 
+
+She was recently seen by a dentist who thought she might 
+possibly
+have some infection, and it seems she was placed on amox/clav PO
+for this.  After presenting to ___ a CT neck was done
+showing no abscess but was concerning for parotitis and
+cellulitis of overlying skin. Since presentation to the ED, the
+swelling has progressed and now the erythema is extending into
+the neck and crossing midline in a matter of hours, pt is also
+reporting new difficulty swallowing. ENT at ___ who were
+consulted over the phone by the ___ felt the
+patient should be transferred into ___ given rapid progression
+in case she develops airway compromise. Pt is currently afebrile
+with no supportive evidence of sepsis. She is on amp/sulbactam.
+
+At time of transfer from ___: 
+T: 98.1   BP: 153/67   HR: 77    RR:16    O2 Sat: 100% on RA
+
+On arrival to floor, patient denies pain, shortness of breath or
+choking sensation. She stated that she has been having 
+difficulty
+swallowing and as such has been mostly sticking to liquids but
+would like to try something like mashed potatoes. She denies
+recent dental surgery or manipulation aside from recent visit to
+her PCP who prescribed her the amoxicillin as above. She states
+that she usually takes Lasix twice a day but she didn't get her
+dose until late this afternoon while awaiting transfer in ___
+and does feel like she has increased swelling in her feet ___
+now.。請問他的 ICD10 編碼應該有哪些呢？"
+883,0.8571428571428571,1371,B20 E039 E11319 E785 I214 I2510 J45909 K219 N189 N390 Z794 Z86711 Z86718,B20 E119 E785 I214 J45 K219 N390 Z794 Z86,"<reasoning>
+逐步推理：
+1.  **HIV:** 病患有 HIV，並正在接受治療 (on Descovy and Dolutegravir)，這表示是活動性的 HIV 疾病，對應 ICD-10 編碼 **B20** (Human immunodeficiency virus [HIV] disease).
+2.  **DVT on Xarelto:** 病患的病史包含 DVT 且正在服用 Xarelto。這通常表示是個人病史（過去的 DVT），而不是急性發作。因此，對應 ICD-10 編碼 **Z86.711** (Personal history of deep vein thrombosis).
+3.  **HLD (Hyperlipidemia):** 病患有高血脂，對應 ICD-10 編碼 **E78.5** (Hyperlipidemia, unspecified).
+4.  **T2DM on insulin (Type 2 Diabetes Mellitus with insulin use):** 病患有第二型糖尿病且使用胰島素。這需要兩個編碼：**E11.9** (Type 2 diabetes mellitus without complications) 和 **Z79.4** (Long-term (current) use of insulin).
+5.  **GERD (Gastroesophageal Reflux Disease):** 病患有胃食道逆流，對應 ICD-10 編碼 **K21.9** (Gastro-esophageal reflux disease without esophagitis).
+6.  **Asthma:** 病患有氣喘，對應 ICD-10 編碼 **J45.909** (Unspecified asthma, uncomplicated).
+7.  **Chest pain for 12 hours, found to have NSTEMI:** 病患因胸痛就醫，診斷為非 ST 段上升型心肌梗塞。這是本次入院的主要原因，對應 ICD-10 編碼 **I21.4** (Non-ST elevation (NSTEMI) myocardial infarction).
+8.  **UTI (Urinary Tract Infection):** 病患在入院期間被診斷出尿路感染，對應 ICD-10 編碼 **N39.0** (Urinary tract infection, site not specified).
+9.  **Cardiac catheterization (___) with POBA to OM1:** 這是本次入院執行的醫療程序，並非診斷碼。相關的診斷（NSTEMI）已編碼。
+
+最合理的編碼集合為：I21.4, B20, E11.9, Z79.4, E78.5, J45.909, K21.9, N39.0, Z86.711.
+</reasoning>
+<answer>
+I21.4,B20,E11.9,Z79.4,E78.5,J45.909,K21.9,N39.0,Z86.711
+</answer>","患者 20078716 的病歷如下：Sex:   F
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+chest pain
+ 
+Major Surgical or Invasive Procedure:
+Cardiac catheterization (___) with POBA to OM1
+
+ 
+History of Present Illness:
+Ms. ___ is a ___ year old woman with HIV (on Descovy and
+Dolutegravir), DVT on Xarelto, HLD, T2DM on insulin, GERD, and
+asthma who presented to ___ with chest pain for 12 hours,
+found to have NSTEMI and transferred to ___ for
+catheterization.
+
+Per record, she has no prior cardiac history. Her chest pain
+reportedly started on ___ and lasted ~12 hours before
+resolving. She denied any nausea, vomiting, dizziness, SOB, or
+diaphoresis. She has been chest pain-free since ___ at 0200. 
+Her
+initial troponin at ___ was negative --> 0.33 ---> 0.42. She
+started on ASA 81mg, increased to Atorvastatin 80mg QHS, and
+received 300 mg of Plavix at ___ on ___. She was also
+started on SQ lovenox (last dose ___ at 1123 am). Finally,
+she was also found to have a UTI and started on Ceftriaxone. 
+
+At ___, her labs were as follows: 
+-CBC: WBC 9.3 (ANC 4700), Hgb 13.4, Plts 341
+-BMP: Na 140, K 4.3, Cl 105, HCO3 23, BUN 19, Cr 1.3, Glc 181
+-LFTs: AST 15 ALT 8, AP 115
+-Trop-T: <0.01 --> 0.33 --> 0.42
+-ProBNP: 378
+-D-dimer: 383
+-UA: Glc 1000, trace ketones, small ___, ___ RBCs, many WBCs 
+(too
+numerous to count), Trace epi, 4+ urine bacteria
+-HIV: Reactive
+
+___ Imaging were as follows: 
+___ CXR: No acute disease
+___ ECG: NSR with HR 88. Normal axis. Normal intervals. TWIs in
+aVR, V1. No ST-segment changes.。請問他的 ICD10 編碼應該有哪些呢？"
+966,0.8571428571428571,698,E669 E785 F17290 I10 M109 R0789 Z6841 Z8249,E669 F17210 I10 M109 R079 Z8249,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Chest pain**: 患者主要主訴為胸痛。這是一個症狀，應編碼為 R079 (Chest pain, unspecified)。
+2.  **h/o hypertension**: 患者有高血壓病史。這是一個慢性疾病，應編碼為 I10 (Essential (primary) hypertension)。
+3.  **obesity**: 患者有肥胖症。這是一個慢性疾病，應編碼為 E669 (Obesity, unspecified)。
+4.  **current tobacco use (cigars)**: 患者目前有吸食雪茄的習慣。這通常被視為尼古丁依賴，應編碼為 F17210 (Nicotine dependence, cigars, uncomplicated)。
+5.  **gout**: 患者有痛風病史。這是一個慢性疾病，應編碼為 M109 (Gout, unspecified)。
+6.  **family history of premature CAD**: 患者有早發性冠狀動脈疾病的家族史，包括兄弟和母親的MI史。這是一個重要的危險因素，應編碼為 Z8249 (Family history of ischemic heart disease and other diseases of the circulatory system)。
+</reasoning>
+<answer>
+R079, I10, E669, F17210, M109, Z8249
+</answer>","患者 20086574 的病歷如下：Sex:   M
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___
+ 
+Chief Complaint:
+Chest pain
+ 
+Major Surgical or Invasive Procedure:
+None
+ 
+History of Present Illness:
+Mr. ___ is a ___ y/o man with a h/o hypertension, obesity, 
+current tobacco use (cigars), gout and family history of 
+premature CAD who presents to the ED with chest pain.
+
+The patient reports that he first developed left-sided ___ 
+chest pain the day before admission which radiated to the neck, 
+posterior shoulder, and down the left arm. He reports that the 
+pain would last for about 30 minutes at a time and occurred ___ 
+times over the course of the day. The pain was first present 
+when he woke up in the morning the day before admission. He 
+reports that the pain is sharp ""like a knife"" and is worse when 
+he is moving his arms around and when he is exerting himself. He 
+noted that he officiates basketball games recreationally and 
+noted that when he went to pick up a basketball, the pain 
+worsened. He also reports that the pain sometimes occurs when 
+climbing stairs. He took 2 Aleve without much relief. He drove 
+himself to the ED.
+
+Overnight, he reports that the chest pain was around ___ and 
+on the day if admission it was a ___. The patient reported some 
+posterior left shoulder pain as well, but denied any dyspnea, 
+fevers, chills, nausea, vomiting, or recent travel. He last ate 
+around ___ pm yesterday.
+
+There is no history of blood clots. He has no known cardiac 
+disease. He states his brother had an MI and had a stent placed 
+at age ___. His mom had an MI when she was around ___. He smokes 
+cigars. He has never had a stress test in the past.
+ 
+In the ED, Initial vitals: Temp: 98.2 HR: 76 BP: 145/87 Resp: 18 
+O2 Sat: 97%.  EKG: Heart Rate: 79; Rhythm: Sinus; ECG Axis: 
+Normal; Intervals: Normal; Unchanged from previous. Labs/studies。請問他的 ICD10 編碼應該有哪些呢？"
+1068,1.0,823,E785 I10 K353,E785 I10 K3580,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Appendicitis** - 這是患者就診的主要原因和最終診斷。在沒有進一步說明（如穿孔、膿腫）的情況下，通常編碼為急性闌尾炎。
+    *   ICD-10 編碼：K35.80 (Acute appendicitis, unspecified)
+2.  **History of Present Illness: HTN (Hypertension)** - 患者有高血壓病史，這是一個慢性疾病，需要編碼。
+    *   ICD-10 編碼：I10 (Essential (primary) hypertension)
+3.  **History of Present Illness: HLD (Hyperlipidemia)** - 患者有高血脂病史，這是一個慢性疾病，需要編碼。
+    *   ICD-10 編碼：E78.5 (Hyperlipidemia, unspecified)
+4.  **History of Present Illness: diffuse abdominal pain that migrated to his RLQ, nausea, dysuria** - 這些是闌尾炎的伴隨症狀。當確診疾病（闌尾炎）已編碼時，通常不再單獨編碼其症狀。如果這些症狀提示了獨立的、未診斷的病症，才會考慮額外編碼。在此案例中，這些症狀都指向闌尾炎，因此不單獨編碼。
+5.  **Major Surgical or Invasive Procedure: laparoscopic appendectomy** - 這是一個手術操作，而非診斷編碼。它支持了闌尾炎的診斷。
+
+總結出最合理的編碼集合：K35.80, I10, E78.5
+</reasoning>
+<answer>
+K35.80, I10, E78.5
+</answer>","患者 20095162 的病歷如下：Sex:   M
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Appendicitis 
+ 
+Major Surgical or Invasive Procedure:
+laparoscopic appendectomy 
+
+ 
+History of Present Illness:
+___ year-old male with history of HTN, HLD who presents with 
+diffuse abdominal pain for 12 hours. He reports onset of diffuse 
+crampy abdominal pain that migrated to his RLQ this morning with 
+some associated nausea and dysuria. Denies vomiting, changes in 
+bowel function, fevers, chills.  Reports he has never had a 
+colonoscopy. Denies prior episodes of similar pain.。請問他的 ICD10 編碼應該有哪些呢？"
+1508,0.8000000000000002,1051,D110 E785 I10 K2970 M8580,D110 E785 I10 M8580 Z91,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Right parotid mass**: 患者因右側腮腺腫塊就診，這是本次就診的主要原因。CT 報告描述為 ""16 x 10 mm well-circumscribed lesion""，且後續進行了右側淺層腮腺切除術 (Right superficial parotidectomy)。在沒有提供病理報告明確腫塊性質（良性或惡性）的情況下，且腫塊被描述為 ""well-circumscribed lesion"" 並進行手術切除，最常見且合理的推斷是良性腫瘤。因此，對應 ICD-10 編碼為 D11.0 (Benign neoplasm of parotid gland)。
+2.  **h/o HTN (Hypertension)**：患者有高血壓病史，這是一個慢性疾病。對應 ICD-10 編碼為 I10 (Essential (primary) hypertension)。
+3.  **h/o HLD (Hyperlipidemia)**：患者有高脂血症病史，這也是一個慢性疾病。對應 ICD-10 編碼為 E78.5 (Hyperlipidemia, unspecified)。
+4.  **h/o Osteopenia (骨質疏鬆症)**：患者有骨質減少症，這是一種骨密度異常的病症。對應 ICD-10 編碼為 M85.80 (Other specified disorders of bone density and structure, unspecified site)。
+5.  **Allergies: nuts / blueberry / strawberry (食物過敏)**：患者對堅果、藍莓、草莓過敏，這些是食物過敏。對應 ICD-10 編碼為 Z91.018 (Other food allergy status)。
+6.  **Allergies: hayfever (花粉症/枯草熱)**：患者有花粉症。這是一種對花粉過敏的狀態。對應 ICD-10 編碼為 Z91.061 (Allergy to pollen)。
+
+總結出最合理的編碼集合：D11.0, I10, E78.5, M85.80, Z91.018, Z91.061。
+</reasoning>
+<answer>
+D11.0, I10, E78.5, M85.80, Z91.018, Z91.061
+</answer>","患者 20130710 的病歷如下：Sex:   F
+ 
+Service: OTOLARYNGOLOGY
+ 
+Allergies: 
+nuts / nuts / blueberry / strawberry / hayfever
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Right parotid mass
+ 
+Major Surgical or Invasive Procedure:
+Right superficial parotidectomy
+
+ 
+History of Present Illness:
+___ h/o HTN, HLD, and osteopenia presents with right parotid 
+mass. CT neck in ___ confirmed right superficial parotid 
+mass, a 16 x 10 mm well-circumscribed lesion. Patient presents 
+for right superficial parotidectomy with Dr. ___ on ___.。請問他的 ICD10 編碼應該有哪些呢？"
+1746,1.0,806,K3580,K3580,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Abdominal pain.** 腹痛是一個症狀，但通常在有明確診斷時會被更具體的診斷碼取代。
+2.  **History of Present Illness: Vague epigastric pain migrating to RLQ by this AM w persistent moderate severity. Now worse w movement.** 疼痛從上腹部轉移至右下腹，且因活動加劇，這是急性闌尾炎的典型表現。右下腹痛的症狀碼為 R10.31。
+3.  **Endorses anorexia and mild constipation. Mild nausea. Last BM three days prior to presentation.** 食慾不振 (anorexia, R63.0)、輕度噁心 (mild nausea, R11.0) 和輕度便秘 (mild constipation, K59.00) 都是急性腹部疾病（如闌尾炎）的常見伴隨症狀。
+4.  **Major Surgical or Invasive Procedure: Laparoscopic appendectomy.** 進行腹腔鏡闌尾切除術直接證實了闌尾炎的診斷。根據病程描述（急性發作、疼痛轉移、伴隨症狀），最合適的診斷是急性闌尾炎。由於沒有提及穿孔或膿腫等具體情況，因此選擇「急性闌尾炎，未指明」K35.80。
+
+總結出最合理的編碼集合：當明確的疾病診斷（如闌尾炎）已經確定且解釋了所有相關症狀時，通常會優先編碼疾病本身，而非單獨編碼其所有伴隨症狀。闌尾炎 (K35.80) 涵蓋了患者的腹痛、噁心、食慾不振和便秘等表現。
+</reasoning>
+<answer>
+K35.80
+</answer>","患者 20152597 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+___: Laparoscopic appendectomy
+
+ 
+History of Present Illness:
+___ otherwise healthy p/w abdominal pain x 2 days. Patient
+in usual state of health until morning prior to presentation 
+when
+she awoke w vague epigastric pain. Described as ___ severity.
+Non-radiating. No alleviating/aggravating factors. Pain migrated
+to RLQ by this AM w persistent moderate severity. Now worse w
+movement. Endorses anorexia and mild constipation. ___ RN at
+___ who referred patient to ED for eval.
+Surgery consult obtained. 
+
+On surgery eval, patient reports ___ RLQ abdominal pain. Taking
+small amount of po; +mild nausea. Passing flatus. Last BM three
+days prior to presentation. Denies fever, chills, chest pain,
+shortness of breath, cough, vomiting, dysuria. LMP ___ and 
+noted
+be at baseline.。請問他的 ICD10 編碼應該有哪些呢？"
+2271,1.0,685,K5900 R1031,K5900 R1031,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Abdominal pain; History of Present Illness: ""abdominal pain lower parts mostly in the right lower quadrant.""** 這是一個明確的症狀描述。腹痛是主要主訴，並且定位在右下象限。因此，應編碼為右下腹痛。
+2.  **History of Present Illness: ""She does endorse constipation as part of her chronic medical condition For which she takes Miralax daily basis.""** 患者明確說明便秘是其慢性病史的一部分，並且日常用藥Miralax也支持這一點。這是一個現有且相關的慢性疾病。因此，應編碼為便秘。
+3.  **其他資訊**：患者否認發燒、寒顫、噁心、嘔吐、腹瀉，這些是陰性症狀，不需編碼。末次月經史、否認接觸史等是鑑別診斷的線索，但本身不是可編碼的診斷或症狀。目前沒有其他明確的病因或診斷被提及。
+
+總結出最合理的編碼集合：
+*   R10.31 (Right lower quadrant abdominal pain) 用於描述患者的右下腹痛主訴。
+*   K59.00 (Constipation, unspecified) 用於描述患者的慢性便秘。
+</reasoning>
+<answer>
+R10.31,K59.00
+</answer>","患者 20197166 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+Mrs ___ is a ___ year healthy female who presented to the ED on 
+___ with abdominal
+pain that started the night before her presentation after eating
+dinner.  She complained of abdominal pain lower parts mostly in
+the right lower quadrant.  She denies fever chills nausea
+vomiting.  Her last period was 4 weeks ago.  She denies sick
+contacts/ diarrhea.  She does endorse constipation as part of 
+her
+chronic medical condition For which she takes Miralax daily
+basis.。請問他的 ICD10 編碼應該有哪些呢？"
+2350,0.8571428571428571,797,M1612 M810 Q6589,M1632 M810 Q658 Z91,"<reasoning>
+逐步推理：
+1.  **Osteoarthritis, left hip, with dysplasia:** 患者診斷為左髖骨關節炎伴發育不良。這應編碼為繼發性骨關節炎，因為發育不良是其原因。因此，編碼 M16.32 (Unilateral secondary osteoarthritis, left hip) 是最合適的。
+2.  **Dysplasia (of hip):** 患者的骨關節炎是繼發於髖關節發育不良的。因此，需要單獨編碼其先天性髖關節變形，編碼 Q65.8 (Other congenital deformities of hip)。
+3.  **Osteoporosis:** 患者有骨質疏鬆症的病史。由於病歷中未提及當前有病理性骨折，應編碼為 M81.0 (Age-related osteoporosis without current pathological fracture)。
+4.  **Allergies: Latex:** 患者對乳膠過敏，這應編碼為 Z91.011 (Latex allergy status)。
+5.  **Left hip pain:** 這是骨關節炎的症狀，當診斷明確時，通常不單獨編碼症狀。
+6.  **Left total hip arthroplasty with cerclage wiring:** 這是一個手術程序，如果需要編碼手術，會使用 ICD-10-PCS。但本次問題請求的是 ICD-10 編碼，在沒有明確指定 PCS 的情況下，通常指診斷編碼 (ICD-10-CM)。
+
+總結出最合理的編碼集合：M16.32, Q65.8, M81.0, Z91.011。
+</reasoning>
+<answer>
+M16.32, Q65.8, M81.0, Z91.011
+</answer>","患者 20203360 的病歷如下：Sex:   F
+ 
+Service: ORTHOPAEDICS
+ 
+Allergies: 
+Latex
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Left hip pain
+ 
+Major Surgical or Invasive Procedure:
+Left total hip arthroplasty with cerclage wiring
+
+ 
+History of Present Illness:
+___ woman with osteoarthritis, left hip, with dysplasia 
+and osteoporosis.  Admitted for left hip arthroplasty.。請問他的 ICD10 編碼應該有哪些呢？"
+2371,0.8000000000000002,1941,E119 E785 I10 I639 R200,E119 E785 I10 R202 Z8719,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Right-sided numbness / HPI: Left-sided numbness:** The chief complaint mentions ""Right-sided numbness,"" but the History of Present Illness (HPI) repeatedly and consistently describes ""numbness along his left face arm and leg"" and ""unable to feel the orange juice and sandwich on the left side of his cheek,"" along with ""some tingling as well in the same distribution."" Given the detailed description in the HPI, the left-sided presentation is considered accurate for the patient's current symptoms. Numbness and tingling are symptoms of paresthesia.
+    *   **ICD-10 Code:** R20.2 (Paresthesia)
+2.  **Past Medical History: Hypertension / HPI: Blood pressures over the past few weeks have been high (160s-180s systolic) and 170s on presentation:** This indicates ongoing and currently uncontrolled essential hypertension.
+    *   **ICD-10 Code:** I10 (Essential (primary) hypertension)
+3.  **Past Medical History: Hyperlipidemia:** This is a documented chronic condition.
+    *   **ICD-10 Code:** E78.5 (Hyperlipidemia, unspecified)
+4.  **Past Medical History: Diabetes / HPI: A1c was 11% years ago but he states that recently he thinks that his been better:** This indicates a history of Type 2 Diabetes Mellitus. No current complications are specified in the provided text.
+    *   **ICD-10 Code:** E11.9 (Type 2 diabetes mellitus without complications)
+5.  **Past Medical History: Previous history of GI bleed:** The patient has a remote history of a GI bleed, which he states ""was not serious"" and doesn't recall details. This is a personal history of a digestive system disease.
+    *   **ICD-10 Code:** Z87.19 (Personal history of other diseases of the digestive system)
+
+總結出最合理的編碼集合：
+Based on the acute presenting symptom and the significant chronic comorbidities, the most appropriate codes are R20.2, I10, E78.5, E11.9, and Z87.19.
+</reasoning>
+<answer>
+R20.2,I10,E78.5,E11.9,Z87.19
+</answer>","患者 20205346 的病歷如下：Sex:   M
+ 
+Service: NEUROLOGY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Right-sided numbness
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+This is a ___ LHD man with a past medical history of
+hypertension, hyperlipidemia, diabetes
+
+He was in his normal state of health when he went to bed last
+night.  He says he was walking up by call around 6:30 AM today 
+at
+which point he felt normal he went back to sleep.  He woke up
+again at 7 AM he states that he noted upon awakening that he had
+numbness along his left face arm and leg.  This continued
+throughout the day.  When he began to eat breakfast he noted 
+that
+he was unable to feel the orange juice and sandwich on the left
+side of his cheek.  He denies any motor symptoms.  There is no
+clumsiness or problems with coordination.  He states the 
+symptoms
+continued and because they were not improving he presented to 
+the
+emergency department for evaluation he states he is otherwise
+been in his usual state of health recently.. He denies any
+similar previous symptoms.  He shows me his blood pressures over
+the past few weeks.  Which have been high.  Ranging from
+systolics in the 160s to 180s.  Upon presentation to the
+emergency room his systolic was in the 170s.  His A1c was 11% ___
+years ago but he states that recently he thinks that his been
+better.  In the chart it states he had a previous history of GI
+bleed.  He states that he does not recall the exact details of
+the of this GI bleed but states that it was not serious.  There
+is some tingling as well in the same distribution.。請問他的 ICD10 編碼應該有哪些呢？"
+2586,0.8333333333333334,928,E785 F419 H8113 I10 R55 R9402,E785 F419 H8110 I10 R42 R55,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: dizziness episodes, LOC (Loss of Consciousness)**：患者此次就診的主要原因是頭暈和意識喪失。意識喪失（LOC）在描述中是「slumped forward and lost consciousness for about 1 min」，並伴有輕微頭暈和出汗，事後有混亂，這高度提示暈厥。因此，應編碼 **R55 (Syncope and collapse)**。頭暈也是主要症狀，可編碼 **R42 (Dizziness and giddiness)**。
+2.  **History of Present Illness - HTN (Hypertension), hyperlipidemia and anxiety**：這些是患者的既往病史，屬於慢性疾病，應編碼。高血壓編碼為 **I10 (Essential (primary) hypertension)**。高血脂編碼為 **E78.5 (Hyperlipidemia, unspecified)**。焦慮症編碼為 **F41.9 (Anxiety disorder, unspecified)**。
+3.  **History of Present Illness - previous event ""benign vertigo""**: 患者在兩週前曾有一次事件，被診斷為「良性眩暈」(benign vertigo)，並服用了Meclizine。儘管目前的事件描述為暈厥，但這段眩暈病史對於神經科評估仍然重要。因此，應編碼 **H81.10 (Benign paroxysmal positional vertigo, unspecified ear)**。雖然過去事件中也提到了耳鳴（ringing in ears），但耳鳴是該次眩暈發作的症狀，且患者在神經學回顧系統中否認目前有眩暈或耳鳴，因此不單獨編碼耳鳴作為當前問題。
+</reasoning>
+<answer>
+R55, R42, I10, E78.5, F41.9, H81.10
+</answer>","患者 20223946 的病歷如下：Sex:   M
+ 
+Service: NEUROLOGY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___
+ 
+Chief Complaint:
+dizziness episodes, LOC 
+ 
+Major Surgical or Invasive Procedure:
+n/a
+
+ 
+History of Present Illness:
+___ yr old man with hx of HTN, hyperlipidemia and anxiety
+who presented to the ED after an episode of LOC proceeded by
+dizziness while in the ___ game. The event was described as
+feeling lightheaded, with diaphoresis for which he sat down and
+immediately slumped forward and lost consciousness for about 1
+min . Once he regained consciousness he was confused for ___ min
+per family after which he realized what happened but was still
+feeling dizzy. He denies vertigo, nausea or vomiting, no
+proceeding HA or visual changes and no  chest pain . 
+Of note 2 weeks ago had an event while he was in dunking
+doughnuts where he was standing starting having ringing in his
+ears right > left, felt as if "" ppl were talking inside my ear"" 
+things were moving around him an the fell but did not loose
+consciousness , he was evaluated in an urgent care and diagnosed
+with benign vertigo an prescribed Meclizine. That event lasted
+for an hour and he has done well since till today. 
+
+On neurologic review of systems, the patient denies headache.
+Denies difficulty with producing or comprehending speech. Denies
+loss of vision, blurred vision, diplopia, vertigo,  dysarthria,
+or dysphagia. Denies focal muscle weakness, numbness,
+parasthesia. Denies loss of sensation. Denies bowel or bladder
+incontinence or retention. Denies difficulty with gait.  
+
+On general review of systems, the patient denies fevers, rigors,
+night sweats, or noticeable weight loss. Denies chest pain,
+palpitations, dyspnea, or cough. Denies nausea, vomiting,
+diarrhea, constipation, or abdominal pain. No recent change in
+bowel or bladder habits. Denies dysuria or hematuria. Denies
+myalgias, arthralgias, or rash.。請問他的 ICD10 編碼應該有哪些呢？"
+2588,1.0,838,E785 I10 I2510 I252 I4891 L03116,E785 I10 I2510 I4891 L03,"<reasoning>
+逐步推理：
+1.  **LLE Cellulitis**: 患者因左下肢蜂窩性組織炎就診，並描述為「LLE cellulitis with failure of abx therapy」，表示抗生素治療失敗且症狀進展。這直接對應蜂窩性組織炎的診斷。左下肢蜂窩性組織炎的 ICD-10 編碼是 L03.116。
+2.  **Afib (Atrial Fibrillation)**: 患者有心房顫動的病史（PMH）。心房顫動的 ICD-10 編碼是 I48.91。
+3.  **CAD (Coronary Artery Disease)**: 患者有冠狀動脈疾病的病史（PMH）。冠狀動脈粥樣硬化性心臟病（未提及心絞痛）的 ICD-10 編碼是 I25.10。
+4.  **HTN (Hypertension)**: 患者有高血壓的病史（PMH）。原發性高血壓的 ICD-10 編碼是 I10。
+5.  **HLD (Hyperlipidemia)**: 患者有高血脂的病史（PMH）。高血脂症，未明確分類的 ICD-10 編碼是 E78.5。
+6.  **ASA (Aspirin)**: 阿斯匹靈是患者用藥，非疾病診斷，不編碼。
+7.  **No Known Allergies**: 患者沒有已知過敏史，這不是一個需要編碼的診斷。
+8.  **Symptoms (redness, pain, swelling, fever, LLE pain, CP, SOB)**: 這些是蜂窩性組織炎或患者其他慢性病的症狀，通常不單獨編碼，除非是主要診斷無法完全涵蓋的症狀，但在此案例中，這些症狀都與蜂窩性組織炎或已編碼的疾病相關。
+
+總結出最合理的編碼集合：L03.116, I48.91, I25.10, I10, E78.5
+</reasoning>
+<answer>
+L03.116,I48.91,I25.10,I10,E78.5
+</answer>","患者 20224035 的病歷如下：Sex:   M
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+LLE Cellulitis
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+This is a ___ w/ history of afib LLE cellulitis with failure of
+abx therapy, Afib on ASA, CAD, HTN, HLD referred here by PCP for
+failed OP tx of cellulitis. Onset of redness, significant pain,
+swelling of LLE ___. The patient was started on keflex/bactrim
+and subsequently had progression of symptoms and was ultimately
+admitted  to hospital on ___, started on vanc and showed some
+improvement. He was ultimately discharged on ___ on doxycycline.
+Since then he has had progression of his symptoms with 
+increased,
+redness, swelling and discomfort. He denies any fever, LLE pain,
+CP, SOB.。請問他的 ICD10 編碼應該有哪些呢？"
+2645,1.0,1770,K5180,K5190,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Medically refractory ulcerative colitis.**
+    *   This is the primary reason for the patient's presentation and the subsequent surgical intervention.
+    *   Ulcerative colitis is classified under K51 in ICD-10.
+    *   The terms ""medically refractory"" and ""steroid dependent"" describe the severity and the failure of medical management, leading to the need for surgery. However, these are not direct ""complications"" as defined by specific ICD-10 codes (e.g., hemorrhage, toxic megacolon, perforation).
+    *   Since no specific anatomical location (e.g., pancolitis, proctitis) or specific ICD-10 recognized complication (e.g., toxic megacolon, hemorrhage) is mentioned, the most appropriate code for unspecified ulcerative colitis without further complications is K51.90.
+2.  **History of Present Illness: ""young female patient that presents with a medically refractory and steroid dependent ulcerative colitis. This is the first step for restorative proctocolectomy.""**
+    *   This reiterates the main diagnosis of ulcerative colitis and clarifies the context of its severity and the plan for surgical treatment. No new diagnostic information is added.
+3.  **Major Surgical or Invasive Procedure: Single site laparoscopic total abdominal colectomy with end ileostomy.**
+    *   This is a surgical procedure. The request is for ICD-10 *diagnosis* codes. While procedures have codes (ICD-10-PCS in the US, or local procedure codes), the prompt specifically asks for ""ICD-10 codes"" which typically refers to diagnosis codes unless otherwise specified. Therefore, the procedure itself does not generate a *diagnosis* code.
+
+總結出最合理的編碼集合：
+基於上述推理，最合理的 ICD-10 診斷編碼是 K51.90，代表未明確說明且無併發症的潰瘍性結腸炎。
+</reasoning>
+<answer>
+K51.90
+</answer>","患者 20227890 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___
+ 
+Chief Complaint:
+Medically refractory ulcerative colitis.
+
+ 
+Major Surgical or Invasive Procedure:
+Single site laparoscopic total abdominal colectomy with end 
+ileostomy.
+
+ 
+History of Present Illness:
+This is a young female patient that presents with a medically 
+refractory and steroid dependent ulcerative colitis.  This is 
+the first step for restorative proctocolectomy.。請問他的 ICD10 編碼應該有哪些呢？"
+2812,1.0,1263,K5732,K5730,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: RLQ abdominal pain (右下腹痛)**: 這是患者就診的主訴。在尚未明確診斷時，這是一個潛在的症狀編碼 (R10.31 - Right lower quadrant abdominal pain)。然而，當後續有明確的診斷可以解釋此疼痛時，通常會優先編碼診斷而非症狀。
+2.  **History of Present Illness**:
+    *   `<24h R-sided abdominal pain` (24小時內右側腹痛): 描述了疼痛的部位和時間。
+    *   `Pain was sudden onset in nature` (疼痛是突發性的): 描述疼痛特徵。
+    *   `No personal or family history of IBD/CRC` (無個人或家族IBD/CRC病史): 負面病史，不需編碼。
+    *   `Never colonoscopy` (從未做過大腸鏡): 醫療史，不需編碼。
+    *   `No prior episodes` (沒有過往發作): 指示這是首次發作。
+3.  **Consultation findings**:
+    *   `WBC 11.7` (白血球11.7): 實驗室檢查結果，顯示白血球輕微升高，提示炎症反應，但這不是一個可獨立編碼的診斷。
+    *   `CTAP with cecal diverticulitis, normal appearing appendix` (CTAP顯示盲腸憩室炎，闌尾正常): 這是明確的診斷。**盲腸憩室炎 (cecal diverticulitis)** 是本次就診的主要原因。
+        *   憩室炎屬於消化系統疾病。盲腸 (cecum) 是大腸的一部分。
+        *   ICD-10 編碼 K57 是用於 ""Diverticular disease of intestine"" (腸道憩室病)。
+        *   K57.3x 系列是針對 ""Diverticulitis of large intestine without perforation or abscess"" (無穿孔或膿腫的大腸憩室炎)。
+        *   由於病歷中沒有提及穿孔、膿腫或出血，因此最準確的編碼是 K57.30 (Diverticulitis of large intestine without perforation or abscess without bleeding)。
+
+總結：患者的主要診斷是盲腸憩室炎。由於CTAP結果明確指出盲腸憩室炎且無穿孔、膿腫或出血的證據，因此最恰當的ICD-10編碼是K57.30。腹痛作為主訴，已被憩室炎此診斷完全解釋，故不需額外編碼。
+</reasoning>
+<answer>
+K57.30
+</answer>","患者 20240962 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___
+ 
+Chief Complaint:
+RLQ abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+___ with <24h R-sided abdominal pain. Denies fevers, chills,
+nausea, vomiting.  Pain was sudden onset in nature. No personal
+or family history of IBD/CRC. Never colonoscopy. Last BM/flatus
+afternoon of admission. LMP ___. No prior episodes. 
+
+At time of consultation, pt AFVSS with focal RLQ pain, WBC 11.7,
+CTAP with cecal diverticulitis, normal appearing appendix.。請問他的 ICD10 編碼應該有哪些呢？"
+2960,1.0,1025,Q433 R634,Q433 R634,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Abdominal pain**：這是患者就診的主訴。然而，病史中已經明確診斷出腹部腸道旋轉不良（abdominal malrotation）是導致疼痛的原因。根據 ICD-10 編碼原則，如果症狀是已知診斷的固有部分，則通常不單獨編碼該症狀。因此，在此情況下，腹痛不需額外編碼。
+2.  **History of Present Illness: 3 months of post-prandial pain**：這提供了疼痛的時程和性質，支持主要診斷。
+3.  **Key finding: Abdominal malrotation at the duodenal jejunal junction, with ascending colon displaced towards left abdomen**：這是核心診斷。ICD-10 中 Q43.3 代表「結腸旋轉不良」（Malrotation of colon）。病史中描述的十二指腸空腸交界處的旋轉不良以及升結腸向左側移位，均符合結腸旋轉不良的範疇。
+4.  **Associated symptom: 10 lb weight loss in past couple of months from decreased PO intake**：體重減輕是一個重要的臨床表現，儘管病史中說明了原因是進食減少（由於疼痛），但「體重減輕」本身仍是一個需要編碼的症狀，尤其是在患者經歷了顯著的體重減輕時。R63.4 代表「體重減輕」（Weight loss），它可以用來描述這種臨床狀態。
+5.  **Negative findings: Full GI workup for celiac disease, parasitic infections, lactose intolerance -- all negative**：這些陰性結果排除了其他可能的診斷，進一步支持了腸道旋轉不良作為主要原因，但這些不需要編碼。
+
+總結出最合理的編碼集合：
+*   Q43.3 (Malrotation of colon) - 用於描述腹部腸道旋轉不良。
+*   R63.4 (Weight loss) - 用於描述患者的體重減輕。
+</reasoning>
+<answer>
+Q43.3,R63.4
+</answer>","患者 20255129 的病歷如下：Sex:   M
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+Mr. ___ is a ___ with complaints of 3 months of 
+post-prandial pain found to have abdominal malrotation admitted 
+to ___ for further care. Of note, this is a ___ year old college 
+student who is overall healthy, with 3 months of diffuse, 
+crampy, dull midline abdominal pain that comes on 1 hour after 
+eating and resolves spontaneously. Pain getting progressively 
+worse, patient notes 10 lb weight loss in past couple of months 
+from decreased PO intake. His last meal was last night. Of note, 
+he visited his Atrius PCP last week and underwent a full GI 
+workup for celiac disease, parasitic infections, lactose 
+intolerance -- all negative. Patient underwent a CT enterography 
+study which showed
+malrotation at the duodenal jejunal junction, with ascending 
+colon displaced towards left abdomen. Surgical consult 
+recommended per radiological findings, patient was transferred 
+to ___ ED this evening.。請問他的 ICD10 編碼應該有哪些呢？"
+3311,1.0,1064,K8000,K8020,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: RUQ abdominal pain**：右上腹痛是主要症狀，但通常當有更具體的診斷時，此症狀碼不會被選為主要編碼。
+2.  **History of biliary colic**：膽絞痛是膽結石的典型症狀，尤其是在進食油膩食物後。這強烈指向膽囊結石。
+3.  **4 day history of RUQ pain that is exacerbated by eating fatty food**：這是膽絞痛或膽囊結石的經典表現。
+4.  **Elective cholecystectomy was planned, however she had anxiety about surgery and did not schedule. Due to worsening pain she is amenable to surgery.**：這表示患者的疼痛是由於需要手術治療的膽囊問題引起的，手術的目的是切除膽囊，進一步證實了膽囊結石的診斷。
+5.  **Denies nausea, emesis, change in bowels, darkening of the urine, fevers, chills, chest pain, and shortness of breath.**：否認這些症狀排除了急性膽囊炎 (Acute Cholecystitis)、膽管炎 (Cholangitis) 或膽道阻塞 (Biliary Obstruction) 的可能性，這些情況會涉及 K80.0, K80.1, K80.3, K80.4 等更複雜的編碼。因此，膽囊結石是不伴有急性膽囊炎或阻塞。
+6.  **Major Surgical or Invasive Procedure: laparoscopic cholecystectomy**：腹腔鏡膽囊切除術是治療症狀性膽囊結石的標準手術。
+
+綜合以上資訊，患者的臨床表現符合“膽囊結石，無膽囊炎，無梗阻”的診斷。
+
+總結出最合理的編碼集合：
+*   **K80.20**: Calculus of gallbladder without cholecystitis without obstruction (膽囊結石，無膽囊炎，無梗阻)。這是最能描述患者情況的診斷，包含膽絞痛和RUQ疼痛的病因。
+</reasoning>
+<answer>
+K80.20
+</answer>","患者 20287408 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+RUQ abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+laparoscopic cholecystectomy
+ 
+History of Present Illness:
+___ with history of biliary colic since the birth of her
+second child in ___ presents with 4 day history of RUQ pain
+that is exacerbated by eating fatty food.  She has previously
+been seen by general surgery at ___ for her biliary colic and
+elective cholecystectomy was planned, however she had anxiety
+about surgery and did not schedule.  However, due to worsening
+pain she is amenable to surgery.  She denies nausea, emesis,
+change in bowels, darkening of the urine, fevers, chills, chest
+pain, and shortness of breath.  She says her pain is somewhat
+relieved by lying down in the ED, but is still present.  She is
+well appearing and pleasant.。請問他的 ICD10 編碼應該有哪些呢？"

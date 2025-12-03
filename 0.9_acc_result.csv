@@ -1,0 +1,360 @@
+﻿accuracy_reward,completion_length,ground_truths_ans,predictions_ans,assistant_reply,index,question
+1.0,1354,E785 I10 K760 K8520 N838,E785 I10 K760 K8590 N8320,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: nausea/vomiting, abdominal pain**：這些是導致患者就醫的主要症狀，但在明確診斷為急性胰腺炎後，這些症狀通常被視為胰腺炎的表現，不單獨編碼。
+2.  **History of HTN (Hypertension)**：高血壓是患者的既往病史，屬於慢性疾病，應予編碼。對應 ICD-10 編碼為 I10。
+3.  **History of HLD (Hyperlipidemia)**：高脂血症是患者的既往病史，屬於慢性疾病，應予編碼。對應 ICD-10 編碼為 E78.5。
+4.  **Acute onset abdominal pain, nausea/vomiting, increased abdominal pain**：這些是本次就醫的主要症狀，實驗室檢查顯示脂肪酶顯著升高（lipase 457），CT 掃描提示胰腺頭周圍炎症改變，最終患者被收治入院以管理急性胰腺炎。這明確指向急性胰腺炎。對應 ICD-10 編碼為 K85.90。
+5.  **CT A/P with 5.3 cm left adnexal cystic structure appears simple. Unless prior imaging is available for comparison, outpatient pelvic ultrasound is recommended.**：左側附件囊性結構（通常指卵巢囊腫）是CT檢查中的一個附帶發現，雖然目前判斷為「簡單」（simple），但因其尺寸較大且建議進一步門診超聲檢查，故應予以編碼。對應 ICD-10 編碼為 N83.20 (Unspecified ovarian cyst, unilateral)。
+6.  **RUQ US with steatosis.**：右下腹超聲顯示脂肪肝。這是實體檢查發現的診斷，應予編碼。對應 ICD-10 編碼為 K76.0。
+7.  **Labs notable for: wbc 12.5, Na 132, AST 65, ALT 54, lactate 2.2**：這些是支持急性胰腺炎診斷的實驗室異常，但通常不單獨編碼為主要診斷。
+8.  **Mild headache**：輕微頭痛，在病程中提及，但不是本次入院的主要問題，也無進一步評估或治療，通常不予編碼。
+
+總結出最合理的編碼集合：
+-   I10 (Essential (primary) hypertension)
+-   E78.5 (Hyperlipidemia, unspecified)
+-   K85.90 (Acute pancreatitis, unspecified)
+-   N83.20 (Unspecified ovarian cyst, unilateral)
+-   K76.0 (Fatty (change of) liver, not elsewhere classified)
+</reasoning>
+<answer>
+I10,E78.5,K85.90,N83.20,K76.0
+</answer>",,
+1.0,823,E785 I10 K353,E785 I10 K3580,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Appendicitis** - 這是患者就診的主要原因和最終診斷。在沒有進一步說明（如穿孔、膿腫）的情況下，通常編碼為急性闌尾炎。
+    *   ICD-10 編碼：K35.80 (Acute appendicitis, unspecified)
+2.  **History of Present Illness: HTN (Hypertension)** - 患者有高血壓病史，這是一個慢性疾病，需要編碼。
+    *   ICD-10 編碼：I10 (Essential (primary) hypertension)
+3.  **History of Present Illness: HLD (Hyperlipidemia)** - 患者有高血脂病史，這是一個慢性疾病，需要編碼。
+    *   ICD-10 編碼：E78.5 (Hyperlipidemia, unspecified)
+4.  **History of Present Illness: diffuse abdominal pain that migrated to his RLQ, nausea, dysuria** - 這些是闌尾炎的伴隨症狀。當確診疾病（闌尾炎）已編碼時，通常不再單獨編碼其症狀。如果這些症狀提示了獨立的、未診斷的病症，才會考慮額外編碼。在此案例中，這些症狀都指向闌尾炎，因此不單獨編碼。
+5.  **Major Surgical or Invasive Procedure: laparoscopic appendectomy** - 這是一個手術操作，而非診斷編碼。它支持了闌尾炎的診斷。
+
+總結出最合理的編碼集合：K35.80, I10, E78.5
+</reasoning>
+<answer>
+K35.80, I10, E78.5
+</answer>",1068.0,"患者 20095162 的病歷如下：Sex:   M
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Appendicitis 
+ 
+Major Surgical or Invasive Procedure:
+laparoscopic appendectomy 
+
+ 
+History of Present Illness:
+___ year-old male with history of HTN, HLD who presents with 
+diffuse abdominal pain for 12 hours. He reports onset of diffuse 
+crampy abdominal pain that migrated to his RLQ this morning with 
+some associated nausea and dysuria. Denies vomiting, changes in 
+bowel function, fevers, chills.  Reports he has never had a 
+colonoscopy. Denies prior episodes of similar pain.。請問他的 ICD10 編碼應該有哪些呢？"
+1.0,806,K3580,K3580,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Abdominal pain.** 腹痛是一個症狀，但通常在有明確診斷時會被更具體的診斷碼取代。
+2.  **History of Present Illness: Vague epigastric pain migrating to RLQ by this AM w persistent moderate severity. Now worse w movement.** 疼痛從上腹部轉移至右下腹，且因活動加劇，這是急性闌尾炎的典型表現。右下腹痛的症狀碼為 R10.31。
+3.  **Endorses anorexia and mild constipation. Mild nausea. Last BM three days prior to presentation.** 食慾不振 (anorexia, R63.0)、輕度噁心 (mild nausea, R11.0) 和輕度便秘 (mild constipation, K59.00) 都是急性腹部疾病（如闌尾炎）的常見伴隨症狀。
+4.  **Major Surgical or Invasive Procedure: Laparoscopic appendectomy.** 進行腹腔鏡闌尾切除術直接證實了闌尾炎的診斷。根據病程描述（急性發作、疼痛轉移、伴隨症狀），最合適的診斷是急性闌尾炎。由於沒有提及穿孔或膿腫等具體情況，因此選擇「急性闌尾炎，未指明」K35.80。
+
+總結出最合理的編碼集合：當明確的疾病診斷（如闌尾炎）已經確定且解釋了所有相關症狀時，通常會優先編碼疾病本身，而非單獨編碼其所有伴隨症狀。闌尾炎 (K35.80) 涵蓋了患者的腹痛、噁心、食慾不振和便秘等表現。
+</reasoning>
+<answer>
+K35.80
+</answer>",1746.0,"患者 20152597 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+___: Laparoscopic appendectomy
+
+ 
+History of Present Illness:
+___ otherwise healthy p/w abdominal pain x 2 days. Patient
+in usual state of health until morning prior to presentation 
+when
+she awoke w vague epigastric pain. Described as ___ severity.
+Non-radiating. No alleviating/aggravating factors. Pain migrated
+to RLQ by this AM w persistent moderate severity. Now worse w
+movement. Endorses anorexia and mild constipation. ___ RN at
+___ who referred patient to ED for eval.
+Surgery consult obtained. 
+
+On surgery eval, patient reports ___ RLQ abdominal pain. Taking
+small amount of po; +mild nausea. Passing flatus. Last BM three
+days prior to presentation. Denies fever, chills, chest pain,
+shortness of breath, cough, vomiting, dysuria. LMP ___ and 
+noted
+be at baseline.。請問他的 ICD10 編碼應該有哪些呢？"
+1.0,685,K5900 R1031,K5900 R1031,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Abdominal pain; History of Present Illness: ""abdominal pain lower parts mostly in the right lower quadrant.""** 這是一個明確的症狀描述。腹痛是主要主訴，並且定位在右下象限。因此，應編碼為右下腹痛。
+2.  **History of Present Illness: ""She does endorse constipation as part of her chronic medical condition For which she takes Miralax daily basis.""** 患者明確說明便秘是其慢性病史的一部分，並且日常用藥Miralax也支持這一點。這是一個現有且相關的慢性疾病。因此，應編碼為便秘。
+3.  **其他資訊**：患者否認發燒、寒顫、噁心、嘔吐、腹瀉，這些是陰性症狀，不需編碼。末次月經史、否認接觸史等是鑑別診斷的線索，但本身不是可編碼的診斷或症狀。目前沒有其他明確的病因或診斷被提及。
+
+總結出最合理的編碼集合：
+*   R10.31 (Right lower quadrant abdominal pain) 用於描述患者的右下腹痛主訴。
+*   K59.00 (Constipation, unspecified) 用於描述患者的慢性便秘。
+</reasoning>
+<answer>
+R10.31,K59.00
+</answer>",2271.0,"患者 20197166 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+Mrs ___ is a ___ year healthy female who presented to the ED on 
+___ with abdominal
+pain that started the night before her presentation after eating
+dinner.  She complained of abdominal pain lower parts mostly in
+the right lower quadrant.  She denies fever chills nausea
+vomiting.  Her last period was 4 weeks ago.  She denies sick
+contacts/ diarrhea.  She does endorse constipation as part of 
+her
+chronic medical condition For which she takes Miralax daily
+basis.。請問他的 ICD10 編碼應該有哪些呢？"
+1.0,838,E785 I10 I2510 I252 I4891 L03116,E785 I10 I2510 I4891 L03,"<reasoning>
+逐步推理：
+1.  **LLE Cellulitis**: 患者因左下肢蜂窩性組織炎就診，並描述為「LLE cellulitis with failure of abx therapy」，表示抗生素治療失敗且症狀進展。這直接對應蜂窩性組織炎的診斷。左下肢蜂窩性組織炎的 ICD-10 編碼是 L03.116。
+2.  **Afib (Atrial Fibrillation)**: 患者有心房顫動的病史（PMH）。心房顫動的 ICD-10 編碼是 I48.91。
+3.  **CAD (Coronary Artery Disease)**: 患者有冠狀動脈疾病的病史（PMH）。冠狀動脈粥樣硬化性心臟病（未提及心絞痛）的 ICD-10 編碼是 I25.10。
+4.  **HTN (Hypertension)**: 患者有高血壓的病史（PMH）。原發性高血壓的 ICD-10 編碼是 I10。
+5.  **HLD (Hyperlipidemia)**: 患者有高血脂的病史（PMH）。高血脂症，未明確分類的 ICD-10 編碼是 E78.5。
+6.  **ASA (Aspirin)**: 阿斯匹靈是患者用藥，非疾病診斷，不編碼。
+7.  **No Known Allergies**: 患者沒有已知過敏史，這不是一個需要編碼的診斷。
+8.  **Symptoms (redness, pain, swelling, fever, LLE pain, CP, SOB)**: 這些是蜂窩性組織炎或患者其他慢性病的症狀，通常不單獨編碼，除非是主要診斷無法完全涵蓋的症狀，但在此案例中，這些症狀都與蜂窩性組織炎或已編碼的疾病相關。
+
+總結出最合理的編碼集合：L03.116, I48.91, I25.10, I10, E78.5
+</reasoning>
+<answer>
+L03.116,I48.91,I25.10,I10,E78.5
+</answer>",2588.0,"患者 20224035 的病歷如下：Sex:   M
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+LLE Cellulitis
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+This is a ___ w/ history of afib LLE cellulitis with failure of
+abx therapy, Afib on ASA, CAD, HTN, HLD referred here by PCP for
+failed OP tx of cellulitis. Onset of redness, significant pain,
+swelling of LLE ___. The patient was started on keflex/bactrim
+and subsequently had progression of symptoms and was ultimately
+admitted  to hospital on ___, started on vanc and showed some
+improvement. He was ultimately discharged on ___ on doxycycline.
+Since then he has had progression of his symptoms with 
+increased,
+redness, swelling and discomfort. He denies any fever, LLE pain,
+CP, SOB.。請問他的 ICD10 編碼應該有哪些呢？"
+1.0,1770,K5180,K5190,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Medically refractory ulcerative colitis.**
+    *   This is the primary reason for the patient's presentation and the subsequent surgical intervention.
+    *   Ulcerative colitis is classified under K51 in ICD-10.
+    *   The terms ""medically refractory"" and ""steroid dependent"" describe the severity and the failure of medical management, leading to the need for surgery. However, these are not direct ""complications"" as defined by specific ICD-10 codes (e.g., hemorrhage, toxic megacolon, perforation).
+    *   Since no specific anatomical location (e.g., pancolitis, proctitis) or specific ICD-10 recognized complication (e.g., toxic megacolon, hemorrhage) is mentioned, the most appropriate code for unspecified ulcerative colitis without further complications is K51.90.
+2.  **History of Present Illness: ""young female patient that presents with a medically refractory and steroid dependent ulcerative colitis. This is the first step for restorative proctocolectomy.""**
+    *   This reiterates the main diagnosis of ulcerative colitis and clarifies the context of its severity and the plan for surgical treatment. No new diagnostic information is added.
+3.  **Major Surgical or Invasive Procedure: Single site laparoscopic total abdominal colectomy with end ileostomy.**
+    *   This is a surgical procedure. The request is for ICD-10 *diagnosis* codes. While procedures have codes (ICD-10-PCS in the US, or local procedure codes), the prompt specifically asks for ""ICD-10 codes"" which typically refers to diagnosis codes unless otherwise specified. Therefore, the procedure itself does not generate a *diagnosis* code.
+
+總結出最合理的編碼集合：
+基於上述推理，最合理的 ICD-10 診斷編碼是 K51.90，代表未明確說明且無併發症的潰瘍性結腸炎。
+</reasoning>
+<answer>
+K51.90
+</answer>",2645.0,"患者 20227890 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___
+ 
+Chief Complaint:
+Medically refractory ulcerative colitis.
+
+ 
+Major Surgical or Invasive Procedure:
+Single site laparoscopic total abdominal colectomy with end 
+ileostomy.
+
+ 
+History of Present Illness:
+This is a young female patient that presents with a medically 
+refractory and steroid dependent ulcerative colitis.  This is 
+the first step for restorative proctocolectomy.。請問他的 ICD10 編碼應該有哪些呢？"
+1.0,1263,K5732,K5730,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: RLQ abdominal pain (右下腹痛)**: 這是患者就診的主訴。在尚未明確診斷時，這是一個潛在的症狀編碼 (R10.31 - Right lower quadrant abdominal pain)。然而，當後續有明確的診斷可以解釋此疼痛時，通常會優先編碼診斷而非症狀。
+2.  **History of Present Illness**:
+    *   `<24h R-sided abdominal pain` (24小時內右側腹痛): 描述了疼痛的部位和時間。
+    *   `Pain was sudden onset in nature` (疼痛是突發性的): 描述疼痛特徵。
+    *   `No personal or family history of IBD/CRC` (無個人或家族IBD/CRC病史): 負面病史，不需編碼。
+    *   `Never colonoscopy` (從未做過大腸鏡): 醫療史，不需編碼。
+    *   `No prior episodes` (沒有過往發作): 指示這是首次發作。
+3.  **Consultation findings**:
+    *   `WBC 11.7` (白血球11.7): 實驗室檢查結果，顯示白血球輕微升高，提示炎症反應，但這不是一個可獨立編碼的診斷。
+    *   `CTAP with cecal diverticulitis, normal appearing appendix` (CTAP顯示盲腸憩室炎，闌尾正常): 這是明確的診斷。**盲腸憩室炎 (cecal diverticulitis)** 是本次就診的主要原因。
+        *   憩室炎屬於消化系統疾病。盲腸 (cecum) 是大腸的一部分。
+        *   ICD-10 編碼 K57 是用於 ""Diverticular disease of intestine"" (腸道憩室病)。
+        *   K57.3x 系列是針對 ""Diverticulitis of large intestine without perforation or abscess"" (無穿孔或膿腫的大腸憩室炎)。
+        *   由於病歷中沒有提及穿孔、膿腫或出血，因此最準確的編碼是 K57.30 (Diverticulitis of large intestine without perforation or abscess without bleeding)。
+
+總結：患者的主要診斷是盲腸憩室炎。由於CTAP結果明確指出盲腸憩室炎且無穿孔、膿腫或出血的證據，因此最恰當的ICD-10編碼是K57.30。腹痛作為主訴，已被憩室炎此診斷完全解釋，故不需額外編碼。
+</reasoning>
+<answer>
+K57.30
+</answer>",2812.0,"患者 20240962 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___
+ 
+Chief Complaint:
+RLQ abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+___ with <24h R-sided abdominal pain. Denies fevers, chills,
+nausea, vomiting.  Pain was sudden onset in nature. No personal
+or family history of IBD/CRC. Never colonoscopy. Last BM/flatus
+afternoon of admission. LMP ___. No prior episodes. 
+
+At time of consultation, pt AFVSS with focal RLQ pain, WBC 11.7,
+CTAP with cecal diverticulitis, normal appearing appendix.。請問他的 ICD10 編碼應該有哪些呢？"
+1.0,1025,Q433 R634,Q433 R634,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: Abdominal pain**：這是患者就診的主訴。然而，病史中已經明確診斷出腹部腸道旋轉不良（abdominal malrotation）是導致疼痛的原因。根據 ICD-10 編碼原則，如果症狀是已知診斷的固有部分，則通常不單獨編碼該症狀。因此，在此情況下，腹痛不需額外編碼。
+2.  **History of Present Illness: 3 months of post-prandial pain**：這提供了疼痛的時程和性質，支持主要診斷。
+3.  **Key finding: Abdominal malrotation at the duodenal jejunal junction, with ascending colon displaced towards left abdomen**：這是核心診斷。ICD-10 中 Q43.3 代表「結腸旋轉不良」（Malrotation of colon）。病史中描述的十二指腸空腸交界處的旋轉不良以及升結腸向左側移位，均符合結腸旋轉不良的範疇。
+4.  **Associated symptom: 10 lb weight loss in past couple of months from decreased PO intake**：體重減輕是一個重要的臨床表現，儘管病史中說明了原因是進食減少（由於疼痛），但「體重減輕」本身仍是一個需要編碼的症狀，尤其是在患者經歷了顯著的體重減輕時。R63.4 代表「體重減輕」（Weight loss），它可以用來描述這種臨床狀態。
+5.  **Negative findings: Full GI workup for celiac disease, parasitic infections, lactose intolerance -- all negative**：這些陰性結果排除了其他可能的診斷，進一步支持了腸道旋轉不良作為主要原因，但這些不需要編碼。
+
+總結出最合理的編碼集合：
+*   Q43.3 (Malrotation of colon) - 用於描述腹部腸道旋轉不良。
+*   R63.4 (Weight loss) - 用於描述患者的體重減輕。
+</reasoning>
+<answer>
+Q43.3,R63.4
+</answer>",2960.0,"患者 20255129 的病歷如下：Sex:   M
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+Mr. ___ is a ___ with complaints of 3 months of 
+post-prandial pain found to have abdominal malrotation admitted 
+to ___ for further care. Of note, this is a ___ year old college 
+student who is overall healthy, with 3 months of diffuse, 
+crampy, dull midline abdominal pain that comes on 1 hour after 
+eating and resolves spontaneously. Pain getting progressively 
+worse, patient notes 10 lb weight loss in past couple of months 
+from decreased PO intake. His last meal was last night. Of note, 
+he visited his Atrius PCP last week and underwent a full GI 
+workup for celiac disease, parasitic infections, lactose 
+intolerance -- all negative. Patient underwent a CT enterography 
+study which showed
+malrotation at the duodenal jejunal junction, with ascending 
+colon displaced towards left abdomen. Surgical consult 
+recommended per radiological findings, patient was transferred 
+to ___ ED this evening.。請問他的 ICD10 編碼應該有哪些呢？"
+1.0,1064,K8000,K8020,"<reasoning>
+逐步推理：
+1.  **Chief Complaint: RUQ abdominal pain**：右上腹痛是主要症狀，但通常當有更具體的診斷時，此症狀碼不會被選為主要編碼。
+2.  **History of biliary colic**：膽絞痛是膽結石的典型症狀，尤其是在進食油膩食物後。這強烈指向膽囊結石。
+3.  **4 day history of RUQ pain that is exacerbated by eating fatty food**：這是膽絞痛或膽囊結石的經典表現。
+4.  **Elective cholecystectomy was planned, however she had anxiety about surgery and did not schedule. Due to worsening pain she is amenable to surgery.**：這表示患者的疼痛是由於需要手術治療的膽囊問題引起的，手術的目的是切除膽囊，進一步證實了膽囊結石的診斷。
+5.  **Denies nausea, emesis, change in bowels, darkening of the urine, fevers, chills, chest pain, and shortness of breath.**：否認這些症狀排除了急性膽囊炎 (Acute Cholecystitis)、膽管炎 (Cholangitis) 或膽道阻塞 (Biliary Obstruction) 的可能性，這些情況會涉及 K80.0, K80.1, K80.3, K80.4 等更複雜的編碼。因此，膽囊結石是不伴有急性膽囊炎或阻塞。
+6.  **Major Surgical or Invasive Procedure: laparoscopic cholecystectomy**：腹腔鏡膽囊切除術是治療症狀性膽囊結石的標準手術。
+
+綜合以上資訊，患者的臨床表現符合“膽囊結石，無膽囊炎，無梗阻”的診斷。
+
+總結出最合理的編碼集合：
+*   **K80.20**: Calculus of gallbladder without cholecystitis without obstruction (膽囊結石，無膽囊炎，無梗阻)。這是最能描述患者情況的診斷，包含膽絞痛和RUQ疼痛的病因。
+</reasoning>
+<answer>
+K80.20
+</answer>",3311.0,"患者 20287408 的病歷如下：Sex:   F
+ 
+Service: SURGERY
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+RUQ abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+laparoscopic cholecystectomy
+ 
+History of Present Illness:
+___ with history of biliary colic since the birth of her
+second child in ___ presents with 4 day history of RUQ pain
+that is exacerbated by eating fatty food.  She has previously
+been seen by general surgery at ___ for her biliary colic and
+elective cholecystectomy was planned, however she had anxiety
+about surgery and did not schedule.  However, due to worsening
+pain she is amenable to surgery.  She denies nausea, emesis,
+change in bowels, darkening of the urine, fevers, chills, chest
+pain, and shortness of breath.  She says her pain is somewhat
+relieved by lying down in the ED, but is still present.  She is
+well appearing and pleasant.。請問他的 ICD10 編碼應該有哪些呢？"

@@ -1,0 +1,384 @@
+index,raw_question,accuracy_reward,completion_length,ground_truths_ans,predictions_ans,assistant_reply
+0,"患者 20000024 的病歷如下：Sex:   F
+ 
+Service: MEDICINE
+ 
+Allergies: 
+Aspirin
+ 
+Attending: ___.
+ 
+Chief Complaint:
+weakness, diarrhea
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+Ms. ___ is a ___ year-old woman with PMH significant for 
+chronic anemia, osteoporosis, hypertension, ataxia, and recent 
+L5 fracture in the setting of recurrent falls who presents from 
+home with fatigue and generalized weakness and diarrhea.  
+ The patient's recent history is notable for the follow:  
+ - On ___, she presented with 4 days of LBP s/p fall from 
+standing at which time imaging revealed acute L5 fracture. She 
+was evaluated by Spine team who recommended early mobilization, 
+pain control, but no brace required. She was evaluated by ___, 
+and discharged to ___.  
+ - She was discharged home with ___ on ___.  
+ - On ___, she again presented to ___ s/p fall from 
+standing while trying to reach for a glass of water. She did 
+have a occipital scalp hematoma, but imaging including ___, 
+C-spine CT, and L hip X-ray were negative for acute process so 
+patient was discharged home.  
+ She now represents with generalized fatigue and diarrhea. In 
+the setting of opiates for her L5 fracture, the patient has had 
+constipation (5 days with no BM) for which she took a ""natural 
+laxative"" the evening prior to presentation. The patient had 2 
+bowel movements in the morning of presentation and one episode 
+of incontinence with diarrhea while sleeping. In this setting, 
+she felt very weak and called EMS and was brought to ___ ED.  
+ In ___ ED:  
+ - Initial VS 98.7 72 130/46 16 99% RA  
+ - Labs notable for Chem-7 with BUN/Cr 36/1.1 otherwise wnl, CBC 
+with H/H 7.8/25.4 (baseline Hct 31), iron studies with iron 49 
+ferritin 249, hemolysis labs with LDH 163 Tbili 0.2 hapto 170. 
+UA negative.  
+ - CXR without acute intrathoracic process. CT A/P without acute 
+process.  
+ - The patient was administered  
+ ___ 21:25 PO/NG OxyCODONE (Immediate Release) 2.5 mg  
+ ___ 21:25 PO/NG Gabapentin 100 mg  
+ ___ 21:25 PO/NG Thiamine 100 mg  
+ ___ 21:25 PO/NG FoLIC Acid 1 mg  
+ 1u pRBC transfusion started  
+ - VS prior to transfer 98.5 60 150/56 18 100% RA  
+ Upon arrival to the floor, VS 149/59 57 18 100%RA. The patient 
+is well-appearing and states that she already feels significant 
+better than when she first presented.。請問他的 ICD10 編碼應該有哪些呢？",0.17391304347826086,1913,D500 E538 H548 I10 K521 M810 R270 Y92099 Z9181,D62 D649 E860 G119 G8911 I10 K5901 N179 R159 R197 R531 Z513 Z79891 Z79899 Z9181,"逐步推理：
+1.  **R53.1 (Weakness):** 病人主訴為全身性虛弱 (generalized weakness)，此代碼直接對應此症狀。
+2.  **R19.7 (Diarrhea, unspecified):** 病人主訴為腹瀉 (diarrhea)，且病史中描述有多次腹瀉和失禁，此代碼適用。
+3.  **E86.0 (Dehydration):** 病人因腹瀉、虛弱和 BUN/Cr 升高（36/1.1），符合脫水 (dehydration) 的臨床表現。
+4.  **N17.9 (Acute kidney failure, unspecified):** 實驗室檢查顯示 BUN/Cr 升高，提示急性腎損傷 (acute kidney injury)，此代碼適用。
+5.  **K59.01 (Chronic constipation):** 病人有五天未排便的便秘史，且因服用鴉片類藥物導致便秘，符合慢性便秘 (chronic constipation) 的情況。
+6.  **T47.6X5A (Adverse effect of other laxatives, initial encounter):** 病人服用「天然瀉藥」(natural laxative) 後出現腹瀉和失禁，此為瀉藥的不良反應，且為本次就醫的急性原因。
+7.  **R15.9 (Full incontinence of feces, unspecified cause):** 病人描述有睡眠中失禁 (incontinence with diarrhea while sleeping) 的情況，此代碼對應糞便失禁。
+8.  **D62 (Acute posthemorrhagic anemia):** 病人的血紅蛋白/血細胞比容從基準值 31 降至 7.8/25.4，且接受輸血，提示存在急性失血性貧血 (acute posthemorrhagic anemia) 或急性貧血加重。
+9.  **D64.9 (Anemia, unspecified):** 病人過去病史中有慢性貧血 (chronic anemia)，此代碼對應其慢性狀態。
+10. **M80.08XD (Age-related osteoporosis with current pathological fracture, other vertebra, subsequent encounter for fracture):** 病人有骨質疏鬆症 (osteoporosis) 並伴有近期 L5 椎體骨折 (L5 fracture)。由於病人仍在服用止痛藥，且本次就醫原因為骨折治療的併發症 (便秘)，而非骨折本身的初始治療，因此選擇「後續就醫」(subsequent encounter) 代碼。
+11. **I10 (Essential (primary) hypertension):** 病人過去病史中有高血壓 (hypertension)。
+12. **G11.9 (Hereditary ataxia, unspecified):** 病人過去病史中有共濟失調 (ataxia) 的診斷。
+13. **Z91.81 (History of falling):** 病人有反覆跌倒 (recurrent falls) 的病史，且本次住院前也有跌倒事件。
+14. **G89.11 (Acute pain due to trauma):** 儘管骨折在癒合期，但病人仍需服用鴉片類藥物控制 L5 骨折引起的急性疼痛，此代碼適用。
+15. **Z79.891 (Long-term (current) use of opioid analgesics):** 病人因 L5 骨折長期服用鴉片類止痛藥 (opiates)。
+16. **Z79.899 (Other long-term (current) drug therapy):** 病人長期服用 Gabapentin。
+17. **Z51.3 (Encounter for transfusion of blood and blood components):** 病人接受了輸血治療 (1u pRBC transfusion started)。
+
+<answer>R531,R197,E860,N179,K5901,T476X5A,R159,D62,D649,M8008XD,I10,G119,Z9181,G8911,Z79891,Z79899,Z513</answer>"
+1,"患者 20000094 的病歷如下：Sex:   M
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___.
+ 
+Chief Complaint:
+Cardiogenic shock
+ 
+Major Surgical or Invasive Procedure:
+None
+ 
+History of Present Illness:
+The patient is an ___ y/o M with PMHx significant for 3 vessel 
+CAD s/p RCA stenting in ___, ischemic cardiomyopathy with EF 
+25%, DMII, HLD, Obesity, HTN, CKD, COPD who initially presented 
+to an OSH with shortness of breath on ___ now transferred to 
+___ in cardiogenic shock.
+
+Per patient, he has had multiple recent admissions to an OSH for 
+heart failure recently.  On ___, he presented to an OSH with 
+worsening dyspnea, shortness of breath with exertion, and lower 
+extremity edema.  Otherwise, he denies any chest pain, 
+palpitations, fevers, chills, abd pain, n/v, diarrhea.
+
+Upon admission to the OSH, he was found to have an elevated 
+troponin to 1.23 (unclear if this was I or T), elevated BNP and 
+was started on a heparin gtt and admitted to the ICU.  At some 
+point during that admission, heparin gtt was discontinued.  He 
+was noted to be in cardiogenic shock and was diuresed (weight 
+down 7kg since admission per discharge summary).  Initially UOP 
+was good but then dropped off in the past couple days.  He was 
+started on dobutamine; however, this was discontinued due to 
+afib and tachyarrhythmia.
+
+Unfortunately, on the day of transfer, UOP had decreased, 
+transaminitis had developed, and patient required levophed for 
+blood pressure support.
+
+Upon arrival to the CCU, patient denies any focal complaints.。請問他的 ICD10 編碼應該有哪些呢？",0.5405405405405405,2464,E118 E669 E785 I071 I129 I2510 I255 I272 I340 I447 I4891 I509 J449 K7200 N179 N189 R570 R7989 Z515 Z66 Z9861,E119 E669 E785 I10 I214 I2510 I255 I4891 I5023 J449 N179 N189 R0600 R34 R570 R600 R740 Z955,"<reasoning>
+逐步推理：
+1.  **Cardiogenic shock (Chief Complaint and HPI):** 病人主訴為心源性休克，病史中也明確記載出現心源性休克。此對應 ICD-10 編碼 **R570** (Cardiogenic shock)。
+2.  **Ischemic cardiomyopathy with EF 25% (PMHx and HPI):** 病人有缺血性心肌病史，射血分數 (EF) 為25%，且有心衰竭急性加重的表現。此對應 ICD-10 編碼 **I255** (Ischemic cardiomyopathy)。
+3.  **Acute on chronic systolic (congestive) heart failure (HPI):** 病人有多次因心衰竭入院的歷史，此次表現為呼吸困難加重、勞力性呼吸困難和下肢水腫，且最終發展為心源性休克，表明慢性心衰竭急性加重。EF 25% 提示收縮性心衰竭。此對應 ICD-10 編碼 **I5023** (Acute on chronic systolic (congestive) heart failure)。
+4.  **Elevated troponin (HPI):** 病人入院時肌鈣蛋白升高。在有冠狀動脈疾病和缺血性心肌病史的背景下，心源性休克合併肌鈣蛋白升高提示非ST段抬高型心肌梗死。此對應 ICD-10 編碼 **I214** (Non-ST elevation (NSTEMI) myocardial infarction)。
+5.  **3 vessel CAD s/p RCA stenting (PMHx):** 病人有三支血管冠狀動脈疾病史，並接受過右冠狀動脈支架置入術。
+    *   冠狀動脈疾病：此對應 ICD-10 編碼 **I2510** (Atherosclerotic heart disease of native coronary artery without angina pectoris)。
+    *   冠狀動脈支架置入：此對應 ICD-10 編碼 **Z955** (Presence of coronary angioplasty implant and graft)。
+6.  **DMII (PMHx):** 病人有第2型糖尿病史。此對應 ICD-10 編碼 **E119** (Type 2 diabetes mellitus without complications)。
+7.  **HLD (PMHx):** 病人有高脂血症史。此對應 ICD-10 編碼 **E785** (Hyperlipidemia, unspecified)。
+8.  **Obesity (PMHx):** 病人有肥胖史。此對應 ICD-10 編碼 **E669** (Obesity, unspecified)。
+9.  **HTN (PMHx):** 病人有高血壓史。此對應 ICD-10 編碼 **I10** (Essential (primary) hypertension)。
+10. **CKD (PMHx):** 病人有慢性腎臟病史。此對應 ICD-10 編碼 **N189** (Chronic kidney disease, unspecified)。
+11. **COPD (PMHx):** 病人有慢性阻塞性肺疾病史。此對應 ICD-10 編碼 **J449** (Chronic obstructive pulmonary disease, unspecified)。
+12. **Worsening dyspnea, shortness of breath with exertion (HPI):** 病人出現呼吸困難和勞力性呼吸困難加重。此對應 ICD-10 編碼 **R0600** (Dyspnea, unspecified)。
+13. **Lower extremity edema (HPI):** 病人出現下肢水腫。此對應 ICD-10 編碼 **R600** (Localized edema)。
+14. **UOP dropped off (HPI):** 病人尿量減少。此對應 ICD-10 編碼 **R34** (Anuria and oliguria)。
+15. **Acute kidney injury (HPI):** 尿量減少且病人有慢性腎臟病史，提示急性腎損傷。此對應 ICD-10 編碼 **N179** (Acute kidney failure, unspecified)。
+16. **Afib and tachyarrhythmia (HPI):** 病人因心房顫動和心動過速而停用多巴酚丁胺。此對應 ICD-10 編碼 **I4891** (Unspecified atrial fibrillation)。
+17. **Transaminitis (HPI):** 病人出現轉氨酶升高。此對應 ICD-10 編碼 **R740** (Nonspecific elevations of transaminase and lactic dehydrogenase levels)。
+
+總結病人的ICD-10編碼集合：R570, I255, I5023, I214, I2510, Z955, E119, E785, E669, I10, N189, J449, R0600, R600, R34, N179, I4891, R740。
+</reasoning>
+<answer>
+R570,I255,I5023,I214,I2510,Z955,E119,E785,E669,I10,N189,J449,R0600,R600,R34,N179,I4891,R740
+</answer>"
+2,"患者 20000147 的病歷如下：Sex:   M
+ 
+Service: CARDIOTHORACIC
+ 
+Allergies: 
+Influenza Virus Vaccines / simvastatin / Crestor
+ 
+Attending: ___.
+ 
+Chief Complaint:
+chest pain 
+ 
+Major Surgical or Invasive Procedure:
+___ Cardiac catheterization 
+___ Emergent coronary artery bypass grafting x4 with
+the left internal mammary artery to the left anterior
+descending artery and reverse saphenous vein graft to the
+ramus intermedius artery, and a sequential vein graft to the
+___ and ___ obtuse marginal artery
+
+ 
+History of Present Illness:
+___ year old male with a history of
+diabetes and hyperlipidemia who is non complaints with
+medications who had chest pain last week that radiated to his
+back. 
+ He presented today to ___ with complaints of chest pain
+that awoke him from sleep at 3am. He described it as heartburn
+and radiated to his back and arm. On presentation to ___,
+initial EKG showed Qs in V2, V3 and Trop was 1.3. CTA negative
+for dissection. Repeat EKG revealed V2, v3, v4 elevation and qs
+in V3.  He received Aspirin, heparin, and Plavix and was
+transferred to ___ cath lab.
+ During catheterization he was found to have multivessel disease
+and is now referred for emergent CABG with Dr. ___.。請問他的 ICD10 編碼應該有哪些呢？",0.4166666666666667,2848,E1121 E113299 E1165 E7800 E785 F329 G5601 I110 I213 I25119 I340 I5021 K429 M179 M549 N400 Z794 Z9114,E119 E785 I2101 I25110 R074 R12 Z881 Z888 Z9119 Z951,"<reasoning>Step-by-step reasoning:
+1.  **Chief Complaint: ""chest pain""** and **HPI: ""chest pain last week that radiated to his back""** and **""complaints of chest pain that awoke him from sleep at 3am""**: These symptoms directly point to angina.
+2.  **HPI: ""initial EKG showed Qs in V2, V3 and Trop was 1.3.""** and **""Repeat EKG revealed V2, v3, v4 elevation""**: The ST-elevation in V2, V3, V4, combined with elevated troponin, confirms an acute ST-elevation myocardial infarction (STEMI) of the anterior wall. This is coded as I2101. The Q waves could indicate evolving MI or previous ischemia, but the acute elevation defines the current event.
+3.  **HPI: ""During catheterization he was found to have multivessel disease""** and **""referred for emergent CABG""**: This indicates severe underlying coronary artery disease (CAD). Given the acute chest pain, prior chest pain and the emergent nature of CABG, this points to unstable angina as the manifestation of the severe CAD. This is coded as I25110.
+4.  **Major Surgical or Invasive Procedure: ""Emergent coronary artery bypass grafting x4""**: This procedure results in a new anatomical status, the presence of coronary bypass grafts. This is coded as Z951.
+5.  **History of Present Illness: ""history of diabetes""**: This is coded as E119 (Type 2 diabetes mellitus without complications) as no specific type or complications are mentioned.
+6.  **History of Present Illness: ""hyperlipidemia""**: This is coded as E785 (Hyperlipidemia, unspecified).
+7.  **History of Present Illness: ""non complaints with medications""**: This indicates patient noncompliance with medical treatment, which is a significant factor in chronic disease management. This is coded as Z9119.
+8.  **Allergies: ""simvastatin / Crestor""**: These are statin medications, indicating an allergy to a drug, medicament, or biological substance. This is coded as Z888.
+9.  **Allergies: ""Influenza Virus Vaccines""**: This indicates an allergy to a vaccine. This is coded as Z881.
+10. **HPI: ""He described it as heartburn""**: This is a symptom reported by the patient. This is coded as R12.
+11. **Chief Complaint: ""chest pain""**: While the etiology is detailed by I2101 and I25110, R074 is appropriate to capture the chief complaint as a symptom.
+
+Summary of ICD-10 codes: The patient presented with acute anterior STEMI (I2101) due to underlying severe multivessel atherosclerotic heart disease with unstable angina (I25110). He also has a history of Type 2 diabetes (E119) and hyperlipidemia (E785), with documented noncompliance to medications (Z9119). He underwent emergent CABG, now having bypass grafts (Z951). His allergies include statins (Z888) and influenza vaccines (Z881). His presenting symptoms included chest pain (R074) and heartburn (R12).</reasoning>
+<answer>I2101,I25110,E119,E785,R074,R12,Z9119,Z951,Z888,Z881</answer>"
+3,"患者 20000239 的病歷如下：Sex:   M
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___
+ 
+Chief Complaint:
+Chest pain, abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:。請問他的 ICD10 編碼應該有哪些呢？",0.0,441,D649 E1140 E785 E875 F329 I120 I25119 I447 I5022 I69354 K219 N186 N289 N400 Z794 Z992,R074 R109,"<reasoning>逐步推理：
+1.  **Chief Complaint: Chest pain (胸痛)**：這是一個症狀。在沒有病史、檢查結果或其他診斷資訊的情況下，無法確定胸痛的具體原因。因此，應使用描述該症狀的 ICD-10 編碼。R07.4 是「胸痛，未特指 (Chest pain, unspecified)」。
+2.  **Chief Complaint: Abdominal pain (腹痛)**：這也是一個症狀。同理，由於缺乏進一步的臨床細節，無法診斷導致腹痛的具體疾病。因此，應使用描述該症狀的 ICD-10 編碼。R10.9 是「腹痛，未特指 (Unspecified abdominal pain)」。
+3.  **其他資訊 (性別、過敏史、主要手術)**：這些資訊不足以推導出任何特定的診斷性 ICD-10 編碼。
+
+總結：基於目前僅有的主訴資訊，只能編碼病人的主要症狀。</reasoning>
+<answer>R074,R109</answer>"
+4,"患者 20000254 的病歷如下：Sex:   F
+ 
+Service: MEDICINE
+ 
+Allergies: 
+___
+ 
+Attending: ___.
+ 
+Chief Complaint:
+abdominal pain
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+Patient is a ___ year old woman with history of pancreatitis of 
+unknown etiology in ___, HTN, GERD, who presents with 
+weeks of abdominal pain.
+
+She is followed by GI at ___ since an episode of pancreatitis 
+in ___. At the time, she initially presented to OSH ___ then 
+___ after an acute onset of abdominal pain, epigastric, 
+severe, radiating to back, while walking down the street. No 
+ETOH intake and she is s/p CCY about ___ years ago. She was 
+diagnosed with pancreatitis at ___ based on labs and discharged 
+with follow up. Patient reports she was unhappy about her care 
+with her PCP, so she changed PCP recently in ___. Since then, 
+she has been experiencing daily epigastric abdominal pain, 
+associated with nausea, vomiting, and more recently 
+constipation.
+
+Regarding her abdominal pain, it is characterized as burning 
+epigastric pain constant, radiating to back and neck. It is not 
+associated with meals or exertion. It is particularly worse in 
+the morning. She has had very poor PO intake over the last few 
+month and reports 40-50 lb weight loss since ___. The pain is 
+associated with nausea, vomiting of bilious emesis, dizziness 
+with no syncope, and constipation. No fevers, chills, night 
+sweats.
+
+Regarding her constipation, she is having to use enemas every 5 
+days for the past month. Her BMs are painful and hard, and 
+occasionally blood streaked, which she reports is due to her 
+known hemorrhoids. She does feel some relief after having BMs, 
+last BM was on ___. She has to occasionally disimpact 
+herself as she feels her sphincter does not open by itself. Of 
+note in ___, she had seven polyps on a colonoscopy done 
+elsewhere and also had a perianal fistula.  She was seen by a 
+colorectal surgeon who told her the fistula did not require 
+therapy at that time and she had a followup colonoscopy in ___ 
+or ___ that seemed to be normal except for one polyp.  The type 
+of polyps that were found is not clear at this moment.
+
+Pt is followed at GI (Dr ___ for chronic abdominal pain. She 
+is on a low-fat diet and tries to eat the blandest of bland 
+foods.  Nonetheless, whenever she eats, she gets pain in her 
+mid-epigastrium and has chronic pain there as well.  She started 
+taking omeprazole 20 mg twice a day and this seemed to help the 
+pain a little bit, suggesting that it could be related to acid.  
+However, she had an upper endoscopy recently by Dr. ___ 
+this did not show anything.  Her biopsies were negative.  Most 
+recently she was seen by GI in ___ and was planned for 
+outpatient gastric emptying study, anorectal motility and 
+colonoscopy. 
+
+Today, she comes in for progressive worsening of the above 
+subacute sxs.
+
+In the ED, initial VS were: 97.7  86  138/78  18  99% RA 
+ED physical exam was recorded as abdomen diffusely tender, worst 
+in the epigastric region. Bowel sounds present.。請問他的 ICD10 編碼應該有哪些呢？",0.5454545454545455,1617,G8929 I110 I5032 K219 K5900 K602 K644 R109 R112,I10 K219 K5900 K603 K649 K869 R1013 R110 R1110 R197 R42 R634 Z86 Z9889,"<reasoning>逐步推理：
+1.  **R10.13 (Epigastric pain)**: 病人主訴為「abdominal pain」，病史中詳細描述為「daily epigastric abdominal pain」、「burning epigastric pain constant, radiating to back and neck」，且 ED 體檢顯示「abdomen diffusely tender, worst in the epigastric region」。
+2.  **K86.9 (Pancreatitis, unspecified)**: 病史提及「history of pancreatitis of unknown etiology in ___」。由於未指明具體病因或類型，故選擇未明示的胰腺炎。
+3.  **I10 (Essential (primary) hypertension)**: 病史中明確提到「HTN」作為既往病史。
+4.  **K21.9 (Gastro-esophageal reflux disease without esophagitis)**: 病史中提及「GERD」，且病人正在服用 omeprazole。最近的上消化道內視鏡檢查未顯示異常，切片檢查也為陰性，排除了伴食道炎的胃食道逆流。
+5.  **R11.0 (Nausea)**: 病人陳述其腹痛伴有「nausea」。
+6.  **R11.10 (Vomiting, unspecified)**: 病人陳述其腹痛伴有「vomiting of bilious emesis」。
+7.  **K59.00 (Constipation, unspecified)**: 病人主訴「more recently constipation」，並描述其便秘情況需要使用灌腸劑，且大便疼痛、堅硬。
+8.  **R63.4 (Abnormal weight loss)**: 病人報告「40-50 lb weight loss since ___」以及「very poor PO intake over the last few month」。
+9.  **R42 (Dizziness and giddiness)**: 病人主訴「dizziness with no syncope」。
+10. **R19.7 (Other difficulties with defecation)**: 病人描述其排便「painful and hard」，且「feels her sphincter does not open by itself」，有時需要自行排除糞便。
+11. **K64.9 (Unspecified hemorrhoids)**: 病人自述大便帶血是因「known hemorrhoids」。
+12. **Z98.89 (Other postprocedural states)**: 病史中提及病人「s/p CCY about ___ years ago」，表示曾接受膽囊切除術。
+13. **Z86.010 (Personal history of colonic polyps)**: 病史提及在過去的結腸鏡檢查中發現「seven polyps」和「one polyp」，但其類型不清楚，且無活躍惡性腫瘤證據，因此使用個人病史代碼。
+14. **K60.3 (Anal fistula, unspecified)**: 病史提及病人曾有「perianal fistula」。
+</reasono<answer>R10.13,K86.9,I10,K21.9,R11.0,R11.10,K59.00,R63.4,R42,R19.7,K64.9,Z98.89,Z86.010,K60.3</answer>"
+5,"患者 20000343 的病歷如下：Sex:   M
+ 
+Service: MEDICINE
+ 
+Allergies: 
+No Known Allergies / Adverse Drug Reactions
+ 
+Attending: ___
+ 
+Chief Complaint:
+Right leg pain
+Weight loss
+ 
+Major Surgical or Invasive Procedure:
+None
+
+ 
+History of Present Illness:
+Mr. ___ is a ___ man with PMH of DMT2, hypertension,
+hyperlipidemia, who presents with right leg pain. 
+Patient states that pain began around 2 weeks ago, located in 
+the
+middle of his calf on his right leg. Described as an ache, that
+is worse with standing or walking, and largely resolved when he
+is not putting weight on it. This is associated with diffuse leg
+swelling from the knee downwards. No history of DVT/PE, or other
+blood clots. No history of immobilization or trauma. Also 
+reports
+some mild chest pain on the right side which comes and goes. No
+cough or hemoptysis.
+
+Patient notes that he has lost 40lb in the past several months.
+He said he was told this is from his high blood sugars.  He 
+tells
+me that he stopped taking his insulin several months ago.  He
+denies any reactions to insulin, instead stating that ""I think 
+it
+was just laziness.""  He states he has an ok appetite and no
+change in bowel movements.  
+
+Regarding his other medications, patient does state that he has
+continued to take his metformin and glipizide, as well as one
+additional medication (he is not sure which one).
+
+On review of records, patient's last hgbA1c 17.7 in ___. 
+At
+that time, he was reportedly on lantus 26u at night as well as
+metformin. He then did not return to clinic for the past several
+months. Per telephone note dated ___, patient's coworker 
+called
+the ___ clinic to express concern as she checked his blood 
+sugar
+at work, where it was found to be ~600. She also reported that
+patient had been losing weight, and that he had told her that he
+had right leg swelling, and was not taking his medications for
+the past 6 months. At this time the patient was referred to the
+ED.。請問他的 ICD10 編碼應該有哪些呢？",0.4444444444444444,1568,E1165 E785 I10 I2699 I82431 I82441 K769 R634 R918 Z6821,E1140 E1151 E1165 E785 I10 M79 R074 R2241 R634 Z7984 Z91,"<reasoning>逐步推理：
+1.  **右腿疼痛 (Right leg pain)**：這是患者的主訴之一。
+    *   M79.604 (Pain in right leg, unspecified)：直接對應右腿疼痛的主訴。
+    *   R22.41 (Localized swelling, mass and lump, right lower limb)：病歷中提到「 diffuse leg swelling from the knee downwards」，這與右腿疼痛同時出現，應予以編碼。
+2.  **體重減輕 (Weight loss)**：這是患者的另一個主訴。
+    *   R63.4 (Unintentional weight loss)：患者自述「lost 40lb in the past several months」，且為非意圖性。
+3.  **第二型糖尿病 (DMT2)**：患者有此既往病史，且病情嚴重失控。
+    *   E11.65 (Type 2 diabetes mellitus with hyperglycemia)：病歷中提及「last hgbA1c 17.7」，「blood sugar at work, where it was found to be ~600」，以及患者停止胰島素治療，這些都指向嚴重的血糖過高狀態。
+    *   E11.40 (Type 2 diabetes mellitus with diabetic neuropathy, unspecified)：考慮到右腿疼痛和足部腫脹，且糖尿病長期失控，糖尿病神經病變是常見的併發症。
+    *   E11.51 (Type 2 diabetes mellitus with diabetic peripheral angiopathy without gangrene)：腿部腫脹也可能是糖尿病周邊血管病變的表現。
+4.  **用藥依從性問題 (Medication non-adherence)**：
+    *   Z91.130 (Patient's intentional underdosing of insulin regimen)：患者自述「stopped taking his insulin several months ago」，原因為「laziness」，符合主動性地減少胰島素劑量。
+    *   Z79.84 (Long-term (current) use of oral hypoglycemic drugs)：患者表示他繼續服用二甲雙胍(metformin)和格列吡嗪(glipizide)。
+5.  **其他主訴/症狀 (Other complaints/symptoms)**：
+    *   R07.4 (Chest pain, unspecified)：患者報告「some mild chest pain on the right side which comes and goes」。
+6.  **既往病史 (Past Medical History, PMH)**：
+    *   I10 (Essential (primary) hypertension)：患者有高血壓的PMH。
+    *   E78.5 (Hyperlipidemia, unspecified)：患者有高脂血症的PMH。
+
+總結病人的ICD-10編碼集合。
+</reasoning><answer>E11.40,E11.51,E11.65,E78.5,I10,M79.604,R07.4,R22.41,R63.4,Z79.84,Z91.130</answer>"
