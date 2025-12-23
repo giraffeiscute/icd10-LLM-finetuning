@@ -22,7 +22,7 @@
 .
 ├── Qwen3 baseline/           # Qwen3 基礎模型的 Baseline 測試代碼與結果
 ├── RL GRPO/                  # 本專案核心：使用 GRPO 演算法進行強化學習微調的實作代碼
-├── SFT/                      # Supervised Fine-Tuning (監督式微調) 相關實驗代碼
+├── SFT/                      # 本專案核心：Supervised Fine-Tuning (監督式微調) 相關實驗代碼
 ├── medgemma baseline/        # 使用 Google MedGemma 模型作為對照組的測試代碼
 ├── gemini API baseline/      # 使用 Gemini API 進行 Zero-shot/Few-shot 測試的基準代碼
 ├── data preprocessing/       # MIMIC-IV 原始資料清洗與前處理腳本
@@ -33,29 +33,34 @@
 ├── requirements.txt          # 專案依賴套件清單
 └── ...
 ```
-## 🚀 方法論 (Methodology)
+##  方法論 (Methodology)
 
-本研究採用了多階段的優化策略，並重點比較了不同模型與訓練方法的效益：
+### 1. 監督式微調與知識蒸餾 (SFT & Knowledge Distillation)
+在進行強化學習之前，我們先透過知識蒸餾建立高品質的基礎能力：
 
-### 1. 強化學習微調 (GRPO)
-採用 DeepSeek 提出的 **GRPO (Group Relative Policy Optimization)** 演算法取代傳統的 PPO。
+* **數據合成**：利用 **Gemini 2.5 Flash** 作為教師模型，針對醫療案例生成具備詳細推理邏輯（Chain of Thought）的模範回答。
+* **模型蒸餾**：將合成的推理數據輸入 **Qwen 14B** 進行監督式微調 (SFT)，使其吸收教師模型的醫療推理路徑與診斷邏輯。
+* **技術實現**：採用 **Unsloth** 框架進行高效微調，優化記憶體佔用並大幅提升訓練速度。
 
-* **優勢**：大幅降低 GPU 運算資源需求，特別適合需要精確推理的複雜多標籤分類任務。
-* **機制**：透過群組相對策略優化，加速模型收斂並改善預測品質。
+### 2. 強化學習微調 (GRPO)
+在 SFT 基礎上，採用 DeepSeek 提出的 **GRPO (Group Relative Policy Optimization)** 演算法：
 
-### 2. 提示工程 (Prompt Engineering)
+* **優勢**：相較於傳統 PPO，GRPO 大幅降低了顯存需求，適合處理複雜的多標籤分類與長推理鏈任務。
+* **機制**：透過群組相對獎勵機制，進一步優化模型在 ICD-10 編碼上的精確度與邏輯一致性。
+
+### 3. 提示工程 (Prompt Engineering)
 設計特定的 System Prompt 讓 LLM 扮演醫療編碼專家：
 
-* **Chain of Thought (CoT)**：要求模型逐步推理（例如：「解釋每種藥物通常用於治療哪些疾病」），再輸出最終編碼。
-* **格式控制**：確保輸出符合標準化格式以便於解析。
+* **Chain of Thought (CoT)**：要求模型逐步推理（例如：「分析病史主訴 -> 對應診斷邏輯 -> 匹配藥物用途」），最後才輸出編碼。
+* **格式控制**：確保輸出符合嚴格的標準化格式，以利後續結構化解析。
 
-### 3. 實驗數據集
+### 4. 實驗數據集
 * **來源**：MIMIC-IV (MIT-LCP)
-* **內容**：涵蓋重症監護病患的病史、主訴、詳細用藥紀錄及專業人員標註的 ICD-10 代碼。
+* **內容**：涵蓋重症監護病患的病史、主訴、詳細用藥紀錄及專業人員標註的標準 ICD-10 代碼。
 
 ---
 
-## 📊 實驗結果 (Results)
+##  實驗結果 (Results)
 
 我們比較了不同模型規模與方法在 ICD-10 預測任務上的表現 (F1 Score)：
 
@@ -71,7 +76,7 @@
 ---
 
 
-## 🛠️ 安裝與使用 (Getting Started)
+##  安裝與使用 (Getting Started)
 
 ### 環境需求
 ```bash
@@ -83,7 +88,7 @@ pip install -r requirements.txt
 
 ---
 
-## 📝 引用與致謝 (Citation)
+##  引用與致謝 (Citation)
 
 本專案使用了 **MIMIC-IV** 資料庫，並結合了高效的微調與強化學習技術。
 
