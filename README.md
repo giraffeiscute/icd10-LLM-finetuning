@@ -1,6 +1,8 @@
 # 運用大型語言模型微調技術提升 ICD-10 診斷編碼預測準確率
-# Enhancing ICD-10 Diagnostic Coding Accuracy via LLM Fine-Tuning
+> [!NOTE]
+> **[繁體中文](#繁體中文)** | **[English Version](#english-version)**
 
+<a name="繁體中文"></a>
 ## 📖 專案簡介 (Introduction)
 
 本專案旨在探索如何透過 **大型語言模型 (LLM)** 的微調技術，從病患的臨床資訊（如病歷、用藥紀錄）中精準推估 **ICD-10 診斷代碼**。
@@ -75,10 +77,10 @@
 | **Qwen3 14B + SFT + RL** | ~0.2958 | RL 後模型醫學知識推理表現更加提升 |
 | *Gemini 2.5 Flash* | *~0.3255* | *Teacher 模型 (知識來源)* |
 
-> **💡 結果分析**：
-> 1. **優化成效**：Qwen3 14B 在加入 RL (GRPO) 後，F1 分數較原始版本提升了約 **16.5%**。
-> 2. **知識蒸餾**：SFT 階段成功將 Gemini 的推理能力轉移至 Qwen 模型中，解決了格式不穩定的問題。
-> 3. **性能差距**：經過優化的 Qwen3 14B 表現有效接近 Gemini 2.5 Flash，證明了「SFT + GRPO」流程在特定垂直領域（醫療編碼）的強大潛力。
+ **💡 結果分析**：
+ 1. **優化成效**：Qwen3 14B 在加入 RL (GRPO) 後，F1 分數較原始版本提升了約 **16.5%**。
+ 2. **知識蒸餾**：SFT 階段成功將 Gemini 的推理能力轉移至 Qwen 模型中，解決了格式不穩定的問題。
+ 3. **性能差距**：經過優化的 Qwen3 14B 表現有效接近 Gemini 2.5 Flash，證明了「SFT + GRPO」流程在特定垂直領域（醫療編碼）的強大潛力。
 ---
 
 
@@ -103,4 +105,125 @@ pip install -r requirements_sft.txt
 * **Technical References**:
     * **Unsloth**: Used for efficient **SFT** (Supervised Fine-Tuning) and memory optimization during training.
     * **DeepSeek GRPO Algorithm**: Used for Group Relative Policy Optimization to enhance reasoning capabilities.
+* **Last updated**: 2025/12
+
+
+<a name="english-version"></a>
+# Enhancing ICD-10 Diagnostic Coding Accuracy via LLM Fine-Tuning
+
+## 📖 Project Overview (Introduction)
+
+This project explores how **large language model (LLM)** fine-tuning techniques can be used to accurately predict **ICD-10 diagnostic codes** from patients’ clinical information (such as clinical notes and medication records).
+
+Traditional approaches (e.g., BERT-based models) often struggle with complex medical contexts, achieving limited performance (F1 score around 0.25), and lack sufficient understanding of Chinese medical terminology. Leveraging the **MIMIC-IV** database, this study integrates **Reinforcement Learning (GRPO)** and **Supervised Fine-Tuning (SFT)** to improve the automation efficiency and accuracy of medical coding.
+
+### Core Objectives
+
+* **Accurate Prediction**: Extract meaningful features from unstructured clinical text to precisely predict ICD-10 codes.
+* **Efficiency Improvement**: Reduce manual coding time and support medical administrative workflows.
+* **Technical Exploration**: Validate the effectiveness of GRPO (Group Relative Policy Optimization) and Supervised Fine-Tuning in multi-label classification tasks.
+
+---
+
+## 📂 Project Structure
+
+The repository is organized as follows:
+
+```text
+.
+├── Qwen3 baseline/            # Baseline experiments and results using the Qwen3 base model
+├── RL GRPO/                   # Core component: reinforcement learning fine-tuning with the GRPO algorithm
+├── SFT/                       # Core component: Supervised Fine-Tuning (SFT) experiments
+├── medgemma baseline/         # Baseline experiments using Google MedGemma as a comparison model
+├── gemini API baseline/       # Baseline experiments using the Gemini API
+├── data preprocessing/        # Scripts for cleaning and preprocessing raw MIMIC-IV data
+├── train data construction/   # Scripts for constructing training data using exemplar answers from Gemini 2.5 Flash
+├── result/                    # Model outputs and experimental results
+├── baseline_summary.ipynb     # Notebook summarizing and analyzing baseline model performance
+├── note_icd_data.jsonl        # Processed clinical notes paired with ICD-10 codes
+├── requirements.txt           # Project dependencies
+├── requirements_sft.txt       # Dependencies specific to SFT experiments
+└── ...
+```
+
+---
+
+## 🧠 Methodology
+
+### 1. Supervised Fine-Tuning & Knowledge Distillation (SFT)
+
+Before reinforcement learning, we first establish strong baseline capabilities through knowledge distillation:
+
+* **Data Synthesis**: Use **Gemini 2.5 Flash** as a teacher model to generate exemplar answers with detailed reasoning chains (Chain of Thought) for medical cases.
+* **Model Distillation**: Feed the synthesized reasoning data into **Qwen 14B** for Supervised Fine-Tuning (SFT), enabling the model to absorb the teacher’s medical reasoning pathways and diagnostic logic.
+* **Technical Implementation**: The **Unsloth** framework is adopted. With its optimized core and Triton kernels, GPU memory usage is reduced by approximately 70%, while training speed is increased by more than 2×.
+
+### 2. Reinforcement Learning Fine-Tuning (GRPO)
+
+Building on the SFT model, we further apply **GRPO (Group Relative Policy Optimization)** proposed by DeepSeek:
+
+* **Advantages**: Unlike traditional PPO, GRPO does not require an additional critic network, significantly reducing computational overhead. This makes it particularly suitable for complex tasks with multiple candidate codes under limited GPU memory.
+* **Mechanism**: Reward functions are designed to enforce **output format correctness**, **code matching accuracy**, and **consistency of clinical reasoning**, ensuring that the model not only outputs correct ICD-10 codes but also provides clinically plausible justifications.
+
+### 3. Prompt Engineering
+
+A dedicated system prompt is designed to position the model as a *professional medical coding auditor*:
+
+* **Chain-of-Thought Guidance**: The model is required to first analyze patient history and medications, and only then output the ICD-10 codes.
+* **Output Constraints**: Standardized JSON or tagged formats are enforced so that predictions can be directly parsed by downstream administrative systems.
+
+### 4. Experimental Dataset
+
+* **Source**: MIMIC-IV (MIT-LCP)
+* **Content**: Includes ICU patient histories, chief complaints, detailed medication records, and professionally annotated ICD-10 codes.
+
+---
+
+## 📊 Experimental Results
+
+We compare different model sizes and methods on the ICD-10 prediction task using the F1 score:
+
+| Model / Method           | Performance (Average F1 Score) | Notes                                                             |
+| :----------------------- | :----------------------------- | :---------------------------------------------------------------- |
+| **MedGemma 4B**          | ~0.1064                        | Medical-optimized base model, but limited performance in practice |
+| **Qwen3 4B**             | ~0.1813                        | General-purpose baseline model                                    |
+| **Qwen3 14B**            | ~0.2539                        | Larger model achieves better performance                          |
+| **Qwen3 14B + SFT**      | ~0.2734                        | More stable reasoning format after SFT                            |
+| **Qwen3 14B + SFT + RL** | ~0.2958                        | Further improvement in medical reasoning after RL                 |
+| *Gemini 2.5 Flash*       | *~0.3255*                      | *Teacher model (knowledge source)*                                |
+
+### 💡 Result Analysis
+
+1. **Optimization Effectiveness**: After applying GRPO-based RL, Qwen3 14B achieves an approximately **16.5%** improvement in F1 score compared to the original model.
+2. **Knowledge Distillation**: The SFT stage successfully transfers Gemini’s reasoning ability to the Qwen model, resolving output format instability.
+3. **Performance Gap**: The optimized Qwen3 14B model approaches the performance of Gemini 2.5 Flash, demonstrating the strong potential of the **SFT + GRPO** pipeline in domain-specific tasks such as medical coding.
+
+---
+
+## 🚀 Getting Started
+
+### Environment Setup
+
+```bash
+pip install -r requirements.txt
+pip install -r requirements_sft.txt
+```
+
+### 🛠️ Data Preparation
+
+Please ensure that you have authorized access to **MIMIC-IV**, and place the raw files into the designated paths under `data preprocessing` before running the cleaning scripts.
+
+---
+
+## 📚 Citation & Acknowledgements
+
+This project utilizes the **MIMIC-IV** database and integrates efficient fine-tuning and reinforcement learning techniques.
+
+* **Data Citation**: Johnson, A., Bulgarelli, L., Pollard, T., ... Mark, R. (2023). *MIMIC-IV*. PhysioNet.
+
+* **Technical References**:
+
+  * **Unsloth**: Used for efficient **SFT (Supervised Fine-Tuning)** and GPU memory optimization during training.
+  * **DeepSeek GRPO Algorithm**: Used for Group Relative Policy Optimization to enhance reasoning capabilities.
+
 * **Last updated**: 2025/12
