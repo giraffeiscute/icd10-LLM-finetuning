@@ -77,3 +77,18 @@
 ```bash
 pip install -r requirements.txt
 ```
+### 🛠️ 數據準備
+
+請確保您擁有 **MIMIC-IV** 的存取權限，並將原始檔案放入 `data preprocessing` 指定的路徑中執行清洗腳本。
+
+---
+
+## 📝 引用與致謝 (Citation)
+
+本專案使用了 **MIMIC-IV** 資料庫，並結合了高效的微調與強化學習技術。
+
+* **Data Citation**: Johnson, A., Bulgarelli, L., Pollard, T., ... Mark, R. (2023). MIMIC-IV. PhysioNet.
+* **Technical References**:
+    * **Unsloth**: Used for efficient **SFT** (Supervised Fine-Tuning) and memory optimization during training.
+    * **DeepSeek GRPO Algorithm**: Used for Group Relative Policy Optimization to enhance reasoning capabilities.
+* **Last updated**: 2025/12
