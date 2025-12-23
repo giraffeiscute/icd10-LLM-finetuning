@@ -24,13 +24,14 @@
 ├── RL GRPO/                  # 本專案核心：使用 GRPO 演算法進行強化學習微調的實作代碼
 ├── SFT/                      # 本專案核心：Supervised Fine-Tuning (監督式微調) 相關實驗代碼
 ├── medgemma baseline/        # 使用 Google MedGemma 模型作為對照組的測試代碼
-├── gemini API baseline/      # 使用 Gemini API 進行 Zero-shot/Few-shot 測試的基準代碼
+├── gemini API baseline/      # 使用 Gemini API 進行測試的基準代碼
 ├── data preprocessing/       # MIMIC-IV 原始資料清洗與前處理腳本
-├── train data construction/  # 建構訓練集、測試集與格式化數據的腳本
-├── result/                   # 存放訓練過程的 Log、模型權重檢查點與評估圖表
+├── train data construction/  # 使用Gemini 2.5 Flash的模範回答建構訓練集的腳本 
+├── result/                   # 存放所有模型回答跟實驗結果
 ├── baseline_summary.ipynb    # 彙整各 Baseline 模型表現的分析筆記本
 ├── note_icd_data.jsonl       # 處理後的臨床筆記與 ICD 對應數據
 ├── requirements.txt          # 專案依賴套件清單
+├── requirements_sft.txt      # sft 專案依賴套件清單
 └── ...
 ```
 ##  方法論 (Methodology)
