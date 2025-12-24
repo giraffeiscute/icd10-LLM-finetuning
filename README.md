@@ -29,7 +29,7 @@
 ├── gemini API baseline/      # 使用 Gemini API 進行測試的基準代碼
 ├── data preprocessing/       # MIMIC-IV 原始資料清洗與前處理腳本
 ├── train data construction/  # 使用Gemini 2.5 Flash的模範回答建構訓練集的腳本 
-├── result/                   # 存放所有模型回答跟實驗結果
+├── results/                   # 存放所有模型回答跟實驗結果
 ├── baseline_summary.ipynb    # 彙整各 Baseline 模型表現的分析筆記本
 ├── note_icd_data.jsonl       # 處理後的臨床筆記與 ICD 對應數據
 ├── requirements.txt          # 專案依賴套件清單
