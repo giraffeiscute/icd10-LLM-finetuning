@@ -138,25 +138,6 @@ def accuracy_func(prompts, completions, answer, **kwargs) -> list[float]:
     # 提取 XML 中的回覆
     extracted_responses = [extract_icd_answer(r) for r in responses]
 
-    # --- CSV 紀錄邏輯 ---
-    csv_filename = "model_generation_logs.csv"
-    file_exists = os.path.isfile(csv_filename)
-    
-    # 我們只紀錄每一批次 (Batch) 的第一個範例來觀察，避免檔案過大
-    # 或者你可以跑迴圈紀錄整個 Batch
-    log_data = {
-        "answer": answer[0],
-        "response": responses[0],
-        "extracted": extracted_responses[0]
-    }
-
-    with open(csv_filename, mode='a', newline='', encoding='utf-8-sig') as f:
-        writer = csv.DictWriter(f, fieldnames=["answer", "response", "extracted"])
-        # 如果檔案是新的，先寫入表頭 (Header)
-        if not file_exists:
-            writer.writeheader()
-        writer.writerow(log_data)
-    # ------------------
     # Debug 輸出
     print('-'*20)
     print(f"Question:\n{q}")
@@ -183,7 +164,7 @@ def accuracy_func(prompts, completions, answer, **kwargs) -> list[float]:
         a_set = set(a_codes)
         r_set = set(r_codes)
 
-        score = compute_f1(r_set, a_set) * 30
+        score = compute_f1(r_set, a_set) * 10
         f1_scores.append(score)
 
     # Debug 輸出
@@ -191,6 +172,26 @@ def accuracy_func(prompts, completions, answer, **kwargs) -> list[float]:
     print("F1 scores:", f1_scores)
     print('--------------------')
 
+    # --- CSV 紀錄邏輯 ---
+    csv_filename = "model_generation_logs.csv"
+    file_exists = os.path.isfile(csv_filename)
+    
+    # 我們只紀錄每一批次 (Batch) 的第一個範例來觀察，避免檔案過大
+    # 或者你可以跑迴圈紀錄整個 Batch
+    log_data = {
+        "answer": answer[0],
+        "response": responses[0],
+        "extracted": extracted_responses[0],
+        "f1": f1_scores
+    }
+
+    with open(csv_filename, mode='a', newline='', encoding='utf-8-sig') as f:
+        writer = csv.DictWriter(f, fieldnames=["answer", "response", "extracted", "f1"])
+        # 如果檔案是新的，先寫入表頭 (Header)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(log_data)
+    # ------------------
     return f1_scores
 
 def soft_format_reward_func(completions, **kwargs) -> list[float]: #只要不是一堆文字敘述就給分
@@ -218,7 +219,7 @@ def strict_format_reward_func(completions, answer, **kwargs) -> list[float]: #�
             a = a.replace("ICD10 編碼：", "")
         # 文字敘述檢查 + 嚴格格式檢查
         if strict_format_check(r,a):  
-            rewards.append(1)   # 是icd10格式 → 1 分
+            rewards.append(0.5)   # 是icd10格式 → 1 分
         else:
             rewards.append(0.0)   # 不符合格式 → 0 分
     print('strict text rewards',rewards)

@@ -57,21 +57,30 @@ EXAMPLE_ANSWER = "D500 E538 H548 I10 K521 M810 R270 T474X5A Y92099 Z9181"
 
 chat_style_data = []
 
+# 設定你想讀取的最大行數（例如設定為 10 筆）
+MAX_ROWS = 1000
+
 with open("0.4_acc_result.csv", "r", encoding="utf-8") as f:
     reader = csv.DictReader(f)
     
-    for row in reader:
-        # row 現在是一個字典，鍵值為 CSV 的標頭 (Header)
+    # 使用 enumerate 來取得行數索引 (i)
+    for i, row in enumerate(reader):
+        # 如果達到設定的行數就停止迴圈
+        if MAX_ROWS is not None and i >= MAX_ROWS:
+            break
+            
+        # 原始的資料處理邏輯
         chat_style_data.append({
             "prompt": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": EXAMPLE_QUESTION},
                 {"role": "assistant", "content": f"<reasoning>{EXAMPLE_REASONING}</reasoning><answer>{EXAMPLE_ANSWER}</answer>"},
-                {"role": "user", "content": row["question"]}  # 從 CSV 的 'question' 欄位讀取
+                {"role": "user", "content": row["question"]}
             ],
-            # 假設 CSV 內也有 'answer' 欄位供 extract_icd_answer 使用
-            "answer":  row["ground_truths_ans"]
+            "answer": row["ground_truths_ans"]
         })
+
+print(f"已成功載入 {len(chat_style_data)} 筆資料。")
 
 dataset = chat_style_data
 
@@ -101,11 +110,11 @@ training_args = GRPOConfig(
     bf16=True,                     # 使用 bfloat16 訓練（省顯存，保持精度）
     per_device_train_batch_size=1, # 每個 GPU batch size
     gradient_accumulation_steps=2, # 梯度累積，等效 batch size = 1*3=3
-    num_generations=1,             # 每個 prompt 生成多少個答案，供 reward function 打分
+    num_generations=2,             # 每個 prompt 生成多少個答案，供 reward function 打分
     max_prompt_length=500,        # prompt 最長 token 長度
-    max_completion_length=1500,     # 模型生成部分最長 token 長度
+    max_completion_length=1600,     # 模型生成部分最長 token 長度
     num_train_epochs=1,            # 訓練 epoch 數
-    save_steps=100,                # 每 100 steps 存 checkpoint
+    save_steps=200,                # 每 100 steps 存 checkpoint
     max_grad_norm=0.1,             # 梯度裁剪上限，避免梯度爆炸
     report_to="tensorboard",       # log 到 tensorboard
     log_on_each_node=False,        # 多機訓練時是否每個節點都 log
@@ -156,7 +165,6 @@ trainer = GRPOTrainer(
     processing_class=tokenizer,
     reward_funcs=[
         accuracy_func,             # 最終準確率獎勵
-        soft_format_reward_func,   # 判斷文字敘述程度 如果不是文字敘述就加分
         strict_format_reward_func # 嚴格格式符合獎勵
     ],
     args=training_args,
@@ -167,3 +175,26 @@ trainer = GRPOTrainer(
 
 # 開始訓練
 trainer.train()
+
+
+# 訓練完後合併並儲存 (注意：這通常需要較大的 CPU RAM)
+from peft import PeftModel
+
+# 1. 先把訓練好的模型存起來
+trainer.save_model("./temp_lora_weights")
+
+# 2. 載入原始模型 (不使用量化，以便合併)
+base_model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype=torch.bfloat16,
+    device_map="cpu", # 合併建議在 CPU 或足夠顯存的 GPU
+    trust_remote_code=True
+)
+
+# 3. 載入 LoRA 權重並合併
+model_to_merge = PeftModel.from_pretrained(base_model, "./temp_lora_weights")
+merged_model = model_to_merge.merge_and_unload()
+
+# 4. 儲存完整模型
+merged_model.save_pretrained("outputs/Qwen-14B-GRPO-sft")
+tokenizer.save_pretrained("outputs/Qwen-14B-GRPO-sft")
