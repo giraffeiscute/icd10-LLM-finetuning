@@ -72,10 +72,15 @@
 | :--- | :--- | :--- |
 | **MedGemma 4B** | ~0.1064 | 針對醫療優化的基礎模型，但實際實驗之表現有限 |
 | **Qwen3 4B** | ~0.1813 | 通用模型 Baseline |
-| **Qwen3 14B** | ~0.2539 | 較大參數模型表現更佳 |
-| **Qwen3 14B + SFT** | ~0.2734 | SFT 後模型推理格式相當穩定 |
+| **Qwen3 14B** | ~0.2514 | 較大參數模型表現更佳 |
+| **Qwen3 14B + SFT** | ~0.2775 | SFT 後模型推理格式相當穩定 |
 | **Qwen3 14B + SFT + RL** | ~0.2958 | RL 後模型醫學知識推理表現更加提升 |
 | *Gemini 2.5 Flash* | *~0.3255* | *Teacher 模型 (知識來源)* |
+
+下圖更詳細地展示了 Qwen-14B 在不同訓練階段（Base, SFT, RL）與 Gemini Pro 對照組，在不同預測數量 (Top-K) 下的 F1 Score 表現趨勢：
+
+![不同模型與微調階段的 F1 Score 比較圖](./graph/14B%20SFT%20vs%2014B%20base%20vs%20gemini_v0.png)
+*圖 1：不同模型在 Top-K 預測中的 F1 Score 表現比較。可見經過 RL (GRPO) 微調後的模型，在各項指標上均優於 SFT 與 Base 版本，並逐步逼近 Gemini Pro 的表現。*
 
  **💡 結果分析**：
  1. **優化成效**：Qwen3 14B 在加入 RL (GRPO) 後，F1 分數較原始版本提升了約 **16.5%**。
@@ -187,8 +192,8 @@ We compare different model sizes and methods on the ICD-10 prediction task using
 | :----------------------- | :----------------------------- | :---------------------------------------------------------------- |
 | **MedGemma 4B**          | ~0.1064                        | Medical-optimized base model, but limited performance in practice |
 | **Qwen3 4B**             | ~0.1813                        | General-purpose baseline model                                    |
-| **Qwen3 14B**            | ~0.2539                        | Larger model achieves better performance                          |
-| **Qwen3 14B + SFT**      | ~0.2734                        | More stable reasoning format after SFT                            |
+| **Qwen3 14B**            | ~0.2514                        | Larger model achieves better performance                          |
+| **Qwen3 14B + SFT**      | ~0.2775                        | More stable reasoning format after SFT                            |
 | **Qwen3 14B + SFT + RL** | ~0.2958                        | Further improvement in medical reasoning after RL                 |
 | *Gemini 2.5 Flash*       | *~0.3255*                      | *Teacher model (knowledge source)*                                |
 
