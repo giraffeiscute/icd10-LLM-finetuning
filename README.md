@@ -197,6 +197,9 @@ We compare different model sizes and methods on the ICD-10 prediction task using
 | **Qwen3 14B + SFT + RL** | ~0.2958                        | Further improvement in medical reasoning after RL                 |
 | *Gemini 2.5 Flash*       | *~0.3255*                      | *Teacher model (knowledge source)*                                |
 
+![Comparison of F1 Scores across different models and fine-tuning stages](./graph/14B%20SFT%20vs%2014B%20base%20vs%20gemini_v0.png)
+*Figure 1: Comparison of F1 Score performance across different models in Top-K predictions. It is evident that the model fine-tuned with RL (GRPO) outperforms both the SFT and Base versions across all metrics, progressively approaching the performance of Gemini Pro.*
+
 ### 💡 Result Analysis
 
 1. **Optimization Effectiveness**: After applying GRPO-based RL, Qwen3 14B achieves an approximately **16.5%** improvement in F1 score compared to the original model.
