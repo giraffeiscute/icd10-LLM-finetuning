@@ -197,10 +197,10 @@ We compare different model sizes and methods on the ICD-10 prediction task using
 | :----------------------- | :----------------------------- | :---------------------------------------------------------------- |
 | **MedGemma 4B**          | ~0.1064                        | Medical-optimized base model, but limited performance in practice |
 | **Qwen3 4B**             | ~0.1813                        | General-purpose baseline model                                    |
-| **Qwen3 14B**            | ~0.2514                        | Larger model achieves better performance                          |
-| **Qwen3 14B + SFT**      | ~0.2775                        | More stable reasoning format after SFT                            |
-| **Qwen3 14B + SFT + RL** | ~0.2958                        | Further improvement in medical reasoning after RL                 |
-| *Gemini 2.5 Flash*       | *~0.3255*                      | *Teacher model (knowledge source)*                                |
+| **Qwen3 14B**            | ~0.2748                        | Larger model achieves better performance                          |
+| **Qwen3 14B + SFT**      | ~0.2970                        | More stable reasoning format after SFT                            |
+| **Qwen3 14B + SFT + RL** | ~0.3127                        | Further improvement in medical reasoning after RL                 |
+| *Gemini 2.5 Flash*       | *~0.3357*                      | *Teacher model (knowledge source)*                                |
 
 ![Comparison of F1 Scores across different models and fine-tuning stages](./graph/14B%20GRPO%20vs%20SFT%20vs%20base%20vs%20gemini_v0.png)
 *Figure 1: Comparison of F1 Score performance across different models in Top-K predictions. It is evident that the model fine-tuned with RL (GRPO) outperforms both the SFT and Base versions across all metrics, progressively approaching the performance of Gemini Pro.*
