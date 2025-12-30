@@ -72,20 +72,25 @@
 | :--- | :--- | :--- |
 | **MedGemma 4B** | ~0.1064 | 針對醫療優化的基礎模型，但實際實驗之表現有限 |
 | **Qwen3 4B** | ~0.1813 | 通用模型 Baseline |
-| **Qwen3 14B** | ~0.2514 | 較大參數模型表現更佳 |
-| **Qwen3 14B + SFT** | ~0.2775 | SFT 後模型推理格式相當穩定 |
-| **Qwen3 14B + SFT + RL** | ~0.2958 | RL 後模型醫學知識推理表現更加提升 |
-| *Gemini 2.5 Flash* | *~0.3255* | *Teacher 模型 (知識來源)* |
+| **Qwen3 14B** | ~0.2748 | 較大參數模型表現更佳 |
+| **Qwen3 14B + SFT** | ~0.2970 | SFT 後模型推理格式相當穩定 |
+| **Qwen3 14B + SFT + RL** | ~0.3127 | RL 後模型醫學知識推理表現更加提升 |
+| *Gemini 2.5 Flash* | *~0.3357* | *Teacher 模型 (知識來源)* |
 
 下圖更詳細地展示了 Qwen-14B 在不同訓練階段（Base, SFT, RL）與 Gemini Pro 對照組，在不同預測數量 (Top-K) 下的 F1 Score 表現趨勢：
 
-![不同模型與微調階段的 F1 Score 比較圖](./graph/14B%20SFT%20vs%2014B%20base%20vs%20gemini_v0.png)
+![不同模型與微調階段的 F1 Score 比較圖](./graph/14B%20GRPO%20vs%20SFT%20vs%20base%20vs%20gemini_v0.png)
 *圖 1：不同模型在 Top-K 預測中的 F1 Score 表現比較。可見經過 RL (GRPO) 微調後的模型，在各項指標上均優於 SFT 與 Base 版本，並逐步逼近 Gemini Pro 的表現。*
 
- **💡 結果分析**：
- 1. **優化成效**：Qwen3 14B 在加入 RL (GRPO) 後，F1 分數較原始版本提升了約 **16.5%**。
- 2. **知識蒸餾**：SFT 階段成功將 Gemini 的推理能力轉移至 Qwen 模型中，解決了格式不穩定的問題。
- 3. **性能差距**：經過優化的 Qwen3 14B 表現有效接近 Gemini 2.5 Flash，證明了「SFT + GRPO」流程在特定垂直領域（醫療編碼）的強大潛力。
+ ** 結果分析**：
+* **優化成效顯著**：
+    Qwen3 14B 在加入 **RL (GRPO)** 強化學習後，F1 分數較原始 Base 版本提升了約 **13.8%**。這證明了強化學習能有效校準模型在處理複雜醫療任務時的決策品質。
+* **知識蒸餾與格式穩定**：
+    **SFT 階段**成功將 Gemini 的推理能力蒸餾至 Qwen 模型中，有效解決了醫療編碼中常見的輸出格式不穩定問題，為後續的 RL 優化奠定了堅實基礎。
+* **RL 誘導之推理能力提升**：
+    透過 RL 階段的獎勵機制（Reward Function），模型不僅學會遵守正確格式，更能深層理解**醫學病歷文本**與 **ICD-10 標準代碼**間的邏輯關聯，使推理表現進一步逼近 Gemini 2.5 Flash。
+* **性能差距縮小**：
+    經過優化的 Qwen3 14B 表現已有效接近商業強大模型。這證明了「**SFT + GRPO**」的訓練流程在醫療編碼等特定垂直領域中，具有極高的落地應用潛力。
 ---
 
 
@@ -202,10 +207,17 @@ We compare different model sizes and methods on the ICD-10 prediction task using
 
 ### 💡 Result Analysis
 
-1. **Optimization Effectiveness**: After applying GRPO-based RL, Qwen3 14B achieves an approximately **16.5%** improvement in F1 score compared to the original model.
-2. **Knowledge Distillation**: The SFT stage successfully transfers Gemini’s reasoning ability to the Qwen model, resolving output format instability.
-3. **Performance Gap**: The optimized Qwen3 14B model approaches the performance of Gemini 2.5 Flash, demonstrating the strong potential of the **SFT + GRPO** pipeline in domain-specific tasks such as medical coding.
+* **Significant Optimization Impact**
+    After incorporating **RL (GRPO)**, the F1 score of Qwen3 14B improved by approximately **13.8%** compared to the original Base version. This demonstrates that reinforcement learning can effectively calibrate the model's decision-making quality when handling complex and high-stakes medical tasks.
 
+* **Knowledge Distillation & Structural Stability**
+    The **SFT phase** successfully distilled reasoning capabilities from Gemini into the Qwen model. This stage was critical in resolving output format instability—a common challenge in automated medical coding—thereby establishing a stable foundation for subsequent RL optimization.
+
+* **RL-Driven Reasoning Enhancement**
+    Through the implementation of specialized **Reward Functions** during the RL phase, the model did not merely learn to adhere to formatting constraints; it developed a deeper cognitive grasp of the logical correlations between **unstructured medical record texts** and **standardized ICD-10 codes**. This advancement brought its reasoning performance significantly closer to that of Gemini 2.5 Flash.
+
+* **Bridging the Performance Gap**
+    The results indicate that the optimized Qwen3 14B has effectively narrowed the performance gap with state-of-the-art commercial models. This validates that the **"SFT + GRPO"** training pipeline holds immense potential for practical, privacy-compliant deployment in specialized vertical domains such as healthcare and medical insurance.
 ---
 
 ## 🚀 Getting Started
