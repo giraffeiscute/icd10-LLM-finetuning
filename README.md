@@ -9,7 +9,7 @@
 
 ## 專案簡介
 
-本專案導入大型語言模型（Large Language Model, LLM）微調技術，建構一套面向醫療理賠場景的自動化診斷報告解讀流程。
+本專案導入大型語言模型（Large Language Model, LLM）微調技術，建構一套面向醫療理賠場景的 **自動化診斷報告解讀流程**。
 
 專案結合 **監督式微調（Supervised Fine-Tuning, SFT）**、**強化學習微調（Reinforcement Learning, RL）**、**Prompt Engineering** 與 **知識蒸餾（Knowledge Distillation）**，使模型能夠從非結構化醫療診斷文本中理解病患病史、用藥紀錄與臨床描述，並輸出可用於後續理賠審核流程的 ICD-10 診斷代碼與分類結果。
 
